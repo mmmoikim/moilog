@@ -13,23 +13,23 @@ module.exports = {
             link: '/'
         }],
         sidebar: [{
-            title: 'VUE',
-            collapsable: true,
-            children: [
-                '/vue/'
-            ]
-        }, {
-            title: 'WEBPACK',
-            collapsable: true,
-            children: [
-                '/webpack/'
-            ]
-        }, {
-            title: 'GIT',
-            collapsable: true,
-            children: [
-                '/git/'
-            ]
-        }]
+                title: 'WEB',
+                collapsable: true,
+                children: ['/web/bfcache']
+            },
+            {
+                title: 'VUE',
+                collapsable: true,
+                children: ['/vue/']
+            }, {
+                title: 'WEBPACK',
+                collapsable: true,
+                children: ['/webpack/']
+            }, {
+                title: 'GIT',
+                collapsable: true,
+                children: ['/git/vuepress']
+            }
+        ]
     }
 }
