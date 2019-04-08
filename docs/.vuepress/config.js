@@ -20,7 +20,7 @@ module.exports = {
             {
                 title: 'VUE',
                 collapsable: true,
-                children: ['/vue/']
+                children: ['/vue/cookbook']
             }, {
                 title: 'WEBPACK',
                 collapsable: true,

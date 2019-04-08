@@ -3,7 +3,7 @@
 
 ### bfcache ( back forward cache )
 
-: 네비게이팅 될 때 그 시점을 pausing 시켜 자바스크립트 힙, 랜더 된 이미지, 스크롤 위치, DOM 을 보존한 후 뒤로가기/앞으로 가기로 돌아 왔을 때 restored 됨
+네비게이팅 될 때 자바스크립트 힙, 랜더 된 이미지, 스크롤 위치, DOM 을 캐싱 한 후 뒤로가기/앞으로가기로 돌아 왔을 때 restored 됨
 
 ---
 A back/forward cache (bfcache) caches whole pages (including the JavaScript heap) when navigating away from a page, so that the full state of the page can be restored when the user navigates back. Think of it as pausing a page when you leave it and playing it when you return.
