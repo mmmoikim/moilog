@@ -104,3 +104,18 @@ var bak = {};
 Student.bind(bak)('박뫄뫄', 'D');
 console.log(bak) // {name: "박뫄뫄", grade: "D"}
 ```
+
+- 화살표 함수
+화살표 함수는 this, arguments, super 또는 new.target을 바인딩하지 않는다.
+
+``` js
+function Person(){
+  this.age = 0;
+
+  setInterval(() => {
+    this.age++; //Person이 this 임
+  }, 1000);
+}
+
+var p = new Person();
+```
