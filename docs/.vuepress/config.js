@@ -20,11 +20,11 @@ module.exports = {
             {
                 title: 'VUE',
                 collapsable: true,
-                children: ['/vue/cookbook']
+                children: ['/vue/vue-instance-properties']
             }, {
-                title: 'WEBPACK',
+                title: 'javascript',
                 collapsable: true,
-                children: ['/webpack/']
+                children: ['/javascript/this']
             }, {
                 title: 'GIT',
                 collapsable: true,
