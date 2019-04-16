@@ -119,3 +119,6 @@ function Person(){
 
 var p = new Person();
 ```
+
+### LINK
+MDN : https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this
