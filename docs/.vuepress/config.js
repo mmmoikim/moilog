@@ -26,9 +26,9 @@ module.exports = {
                 collapsable: true,
                 children: ['/javascript/this']
             }, {
-                title: 'GIT',
+                title: 'configration management',
                 collapsable: true,
-                children: ['/']
+                children: ['/cm/npm']
             }
         ]
     }
