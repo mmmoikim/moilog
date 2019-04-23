@@ -1,6 +1,6 @@
 # this
 
-- default는 window가 this
+## default는 window가 this
 
 ```js
 this.temp = 'a';
@@ -9,7 +9,7 @@ console.log(window.temp) //a
 console.log(temp) //a
 ```
 
-- 생성자로 객체 생성
+## 생성자로 객체 생성
 
 ```js
 function Student(name, grade){
@@ -21,7 +21,7 @@ var hong = new Student('홍길동', 'A');
 //Person {name : '홍길동', grade : 'A'}
 ```
 
-- 클래스로 객체 생성
+## 클래스로 객체 생성
 
 ```js
 class Employee{
@@ -36,7 +36,7 @@ var hong = new Employee('홍길동');
 hong.getName();
 ```
 
-- 프로토타입으로 메소드 선언하면 객체 스코프로 잡힘
+## 프로토타입으로 메소드 선언하면 객체 스코프로 잡힘
 
 ```js
 Student.prototype.isPass = function() {
@@ -45,14 +45,14 @@ Student.prototype.isPass = function() {
 console.log(hong.isPass()); //true
 ```
 
-- new로 선언 안하면 this가 window라서 Person은 생성 안되고 window에 name, age가 선언 됨
+## new로 선언 안하면 this가 window라서 Person은 생성 안되고 window에 name, age가 선언 됨
 
 ```js
 var kim = Student('김뫄뫄', 'B');
 console.log(window.name, window.grade); // 김뫄뫄 B
 ```
 
-- strict 모드로 함수 선언하면 함수 안에서 this는 undifined로 됨.
+## strict 모드로 함수 선언하면 함수 안에서 this는 undifined로 됨.
 
 ```js
 function sum(a, b){
@@ -69,7 +69,7 @@ sum(1,2); //undifined
 window.sum(1,2); //Window {... }
 ```
 
-- 내부함수에서는 부모 this가 참조되지 않음
+## 내부함수에서는 부모 this가 참조되지 않음
 
 ```js
 function test(a){
@@ -84,7 +84,7 @@ test('yee');
 // undefined
 ```
 
-- apply, call, bind 사용
+## apply, call, bind 사용
 
 ```js
 function Student(name, grade){
@@ -105,7 +105,7 @@ Student.bind(bak)('박뫄뫄', 'D');
 console.log(bak) // {name: "박뫄뫄", grade: "D"}
 ```
 
-- 화살표 함수
+## 화살표 함수
 화살표 함수는 this, arguments, super 또는 new.target을 바인딩하지 않는다.
 
 ``` js
@@ -120,5 +120,5 @@ function Person(){
 var p = new Person();
 ```
 
-### LINK
-MDN : https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this
+## LINK
+[MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this)

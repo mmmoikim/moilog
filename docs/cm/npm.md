@@ -1,14 +1,10 @@
-# NPM
+# npm
 
-### npm 최신 버전 업그레이드
----
+## npm 최신 버전 업그레이드
 
 - npm 디폴트 설치 경로 (노드 설치 경로랑 같음) : C:\Program Files (x86)\nodejs
-
 - 글로벌 패키지 설치 경로 : C:\Users\<username>\AppData\Roaming\npm
-
 1. `%ProgramFiles%\nodejs\npm`, `%ProgramFiles%\nodejs\npm.cmd`파일 삭제하기
-
 2. npm 최신버전 설치
 
 ``` bash
@@ -22,16 +18,14 @@ cd %ProgramFiles%\nodejs
 npm install npm@latest
 ```
 
-#### 패키지 경로 확인 후 수정
+### 패키지 경로 확인 후 수정
 
 - npm config get prefix -g 명령어로 글로벌 패키지 설치 경로 알 수 있음
 - `%ProgramFiles%\nodejs\node_modules\npm\npmrc` 파일에서 셋팅
 - `npm config set prefix "${APPDATA}/npm" -g` 명령어로도 셋팅 가능  
 - [npm version DOC](https://docs.npmjs.com/try-the-latest-stable-version-of-npm)
 
-### npm install / update / ci
-
----
+## npm install / update / ci
 
 - npm install
     - package.json에 새로 추가 된 모듈 설치
@@ -50,9 +44,7 @@ npm install npm@latest
   - npm 5.7.0 부터 사용가능
   - [npm CI DOC](https://blog.npmjs.org/post/171556855892/introducing-npm-ci-for-faster-more-reliable)
 
-### package-lock.json
-
----
+## package-lock.json
 
 - package.json에는 install, update 가능한 범위를 명시해 놓는다.
 - npm intall은 로컬에 저장 돼 있는 모듈은 재 설치를 안하기 때문에 언제 install 했는지에 따라 다른 버전이 설치 될 수 있다.
@@ -78,9 +70,7 @@ npm install npm@latest
 - [npm package-lock DOC](https://docs.npmjs.com/files/package-locks)
 - [npm ci DOC](https://docs.npmjs.com/cli/ci.html)
 
-### package.json version syntex
-
----
+## package.json version syntex
 
 - 노드 모듈 버전 범위 syntex
 - [major, minor, patch]
@@ -98,9 +88,7 @@ npm install npm@latest
     ^0.0.3 := >=0.0.3 <0.0.4
 - [npm semver DOC](https://docs.npmjs.com/misc/semver)
 
-### npm 레지스트리 경로 설정
-
----
+## npm 레지스트리 경로 설정
 
 - 넥서스와 같은 사내 내부 스토리지에서 모듈을 설치 하고자 할 경우
 - npm config set resistry <경로>
