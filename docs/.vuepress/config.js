@@ -20,7 +20,7 @@ module.exports = {
             {
                 title: 'VUE',
                 collapsable: true,
-                children: ['/vue/vue-instance-properties', '/vue/vuepress', '/vue/vue-cookbook']
+                children: ['/vue/vuepress', '/vue/vue-cookbook']
             }, {
                 title: 'javascript',
                 collapsable: true,
