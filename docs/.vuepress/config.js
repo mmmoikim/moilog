@@ -24,7 +24,7 @@ module.exports = {
             }, {
                 title: 'javascript',
                 collapsable: true,
-                children: ['/javascript/this']
+                children: ['/javascript/this', '/javascript/lodash']
             }, {
                 title: 'configration management',
                 collapsable: true,
