@@ -20,11 +20,11 @@ module.exports = {
             {
                 title: 'VUE',
                 collapsable: true,
-                children: ['/vue/vuepress', '/vue/vue-cookbook', '/vue/vue-issue']
+                children: ['/vue/vuepress', '/vue/vue-directive', '/vue/vue-issue']
             }, {
                 title: 'javascript',
                 collapsable: true,
-                children: ['/javascript/this', '/javascript/lodash']
+                children: ['/javascript/this', '/javascript/lodash', '/javascript/bubble-capture']
             }, {
                 title: 'webpack',
                 collapsable: true,

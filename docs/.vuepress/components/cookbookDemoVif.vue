@@ -19,7 +19,7 @@
       <input placeholder="Enter your email address" key="email-input">
     </template>
     <p>버튼을 눌러 타입을 변경하세요</p>
-    <buttom @click="onClickToggle">CHANGE LOGIN TYPE</buttom>
+    <button @click="onClickToggle">CHANGE LOGIN TYPE</button>
   </div>
 </template>
 
