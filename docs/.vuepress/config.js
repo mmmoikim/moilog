@@ -20,15 +20,15 @@ module.exports = {
             {
                 title: 'VUE',
                 collapsable: true,
-                children: ['/vue/vuepress', '/vue/vue-cookbook']
+                children: ['/vue/vuepress', '/vue/vue-cookbook', '/vue/vue-issue']
             }, {
                 title: 'javascript',
                 collapsable: true,
                 children: ['/javascript/this', '/javascript/lodash']
             }, {
-                title: 'configration management',
+                title: 'webpack',
                 collapsable: true,
-                children: ['/cm/npm']
+                children: ['/webpack/npm']
             }
         ]
     }

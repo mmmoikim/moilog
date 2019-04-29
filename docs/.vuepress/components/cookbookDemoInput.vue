@@ -19,8 +19,8 @@ export default {
   },
   data() {
     return {
-      modelBind: "test",
-      valueBind: "test"
+      modelBind: "한글",
+      valueBind: "한글"
     }
   },
   methods: {
