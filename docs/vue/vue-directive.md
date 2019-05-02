@@ -210,11 +210,9 @@ export default {
   <!-- 2) 인라인 메소드   -->
   <button v-on:click="say('hi')">Say hi</button>
   <!-- 3) 인라인에서 event 객체 받을 때  -->
-  <button v-on:click="warn('Form cannot be submitted yet.', $event)">Submit</button>
+  <button v-on:click="warn('warnning!!', $event)">Submit</button>
   <!-- 동적 바인딩 가능 -->
   <button @:[keyname]="keyvalue">Button</button>
-  <!-- event.preventDefault() 를 트리거 할 수 있다 -->
-  <button v-on:submit.prevent="onSubmit">Button</button>
 </template>
 <script>
   var example = new Vue({

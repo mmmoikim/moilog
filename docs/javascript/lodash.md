@@ -51,9 +51,53 @@ search();
 
 ### _.without(array, [values])
 
-특정값 제거
+배열 특정 값 제거
 
 ```js
 _.without([2, 1, 2, 3], 1, 2);
 // => [3]
 ```
+
+### _.remove(array, [predicate=_.identity])
+
+객체 배열 특정 값 삭제 할 때
+
+```js
+var array = [1, 2, 3, 4];
+var evens = _.remove(array, function(n) {
+  return n % 2 == 0;
+});
+console.log(array);
+// => [1, 3]
+console.log(evens);
+// => [2, 4]
+```
+
+### _.difference(array, [values])
+
+첫번째 배열 중 두번째 배열에 없는 값 알고 싶을 때
+
+```js
+_.difference([2, 1], [2, 3]);
+// => [1]
+```
+
+### _.differenceBy(array, [values], [iteratee=_.identity])
+
+객체 배열 일 때 특정 키로
+
+```js
+_.differenceBy([{ 'x': 2 }, { 'x': 1 }], [{ 'x': 1 }], 'x');
+// => [{ 'x': 2 }]
+```
+
+### _.differenceWith(array, [values], [comparator])
+
+객체 배열 일 때
+
+```js
+var objects = [{ 'x': 1, 'y': 2 }, { 'x': 2, 'y': 1 }];
+_.differenceWith(objects, [{ 'x': 1, 'y': 2 }], _.isEqual);
+// => [{ 'x': 2, 'y': 1 }]
+```
+
