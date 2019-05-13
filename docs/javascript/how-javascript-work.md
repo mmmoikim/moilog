@@ -2,7 +2,7 @@
 
 ## 브라우저 구성
 
-![브라우저](/docs/img/javascript/how-javascript-work-1.png)
+![브라우저](../assets/img/javascript/how-javascript-work-1.png)
 
 - WebAPI : 비동기 호출(`setTimeout`, `XMLHttpRequest`)과 `DOM`과 같은 기능을 제공한다.
 - 이벤트루프와 태스트큐 : 엔진 외부에 구현되어 있고 비동기 방식으로 동시성을 제공한다.
@@ -10,13 +10,13 @@
 
 ### Node.js 구성
 
-![Node.js](/docs/img/javascript/how-javascript-work-2.jpg)
+![Node.js](../assets/img/javascript/how-javascript-work-2.jpg)
 
 - api 콜백을 LIBUV(node.js 비동기 IO 라이브러리)가 지원하는 이벤트 루프에서 처리한다.
 
 ## 브라우저 엔진
 
-![브라우저엔진](/docs/img/javascript/how-javascript-work-3.png)
+![브라우저엔진](../assets/img/javascript/how-javascript-work-3.png)
 
 - Mozilla Firefox : Spidermonkey
 - Microsoft Edge : Chakra / ChakraCore
