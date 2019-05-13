@@ -24,7 +24,7 @@ module.exports = {
             }, {
                 title: 'javascript',
                 collapsable: true,
-                children: ['/javascript/this', '/javascript/lodash', '/javascript/bubble-capture']
+                children: ['/javascript/this', '/javascript/lodash', '/javascript/bubble-capture', '/javascript/how-javascript-work']
             }, {
                 title: 'webpack',
                 collapsable: true,
