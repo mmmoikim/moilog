@@ -80,7 +80,6 @@ while(queue.waitForMessage()){
 }
 ```
 
-
 - A 콜백이 큐에서 제거되고 B 콜백이 실행 될때 B에서 에러가 발생하므로 A콜백에 있는 try-catch 문에 잡히지 않는다.
 
 ```js
