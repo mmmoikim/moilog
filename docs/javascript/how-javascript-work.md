@@ -1,5 +1,21 @@
 # How javascript work
 
+## Contents
+
+- [How javascript work](#how-javascript-work)
+  - [Contents](#contents)
+  - [브라우저 구성](#%EB%B8%8C%EB%9D%BC%EC%9A%B0%EC%A0%80-%EA%B5%AC%EC%84%B1)
+  - [Node.js 구성](#nodejs-%EA%B5%AC%EC%84%B1)
+  - [브라우저 엔진](#%EB%B8%8C%EB%9D%BC%EC%9A%B0%EC%A0%80-%EC%97%94%EC%A7%84)
+    - [V8](#v8)
+    - [hidden class](#hidden-class)
+    - [인라인캐싱](#%EC%9D%B8%EB%9D%BC%EC%9D%B8%EC%BA%90%EC%8B%B1)
+    - [가비지 콜렉터](#%EA%B0%80%EB%B9%84%EC%A7%80-%EC%BD%9C%EB%A0%89%ED%84%B0)
+  - [이벤트 루프와 테스트 큐](#%EC%9D%B4%EB%B2%A4%ED%8A%B8-%EB%A3%A8%ED%94%84%EC%99%80-%ED%85%8C%EC%8A%A4%ED%8A%B8-%ED%81%90)
+    - [Zero delays](#zero-delays)
+    - [마이크로테스크](#%EB%A7%88%EC%9D%B4%ED%81%AC%EB%A1%9C%ED%85%8C%EC%8A%A4%ED%81%AC)
+  - [참조](#%EC%B0%B8%EC%A1%B0)
+
 ## 브라우저 구성
 
 ![브라우저](../assets/img/javascript/how-javascript-work-1.png)
@@ -8,7 +24,7 @@
 - 이벤트루프와 태스트큐 : 엔진 외부에 구현되어 있고 비동기 방식으로 동시성을 제공한다.
 - javascript 엔진 : 메모리 힙과 콜스택으로 구성된다.
 
-### Node.js 구성
+## Node.js 구성
 
 ![Node.js](../assets/img/javascript/how-javascript-work-2.jpg)
 
@@ -124,7 +140,7 @@ $('.btn').click(function() {
 
 - 프로미스는 마이크로테스크로 등록 되는데 이는 일반 태스크큐 보다 높은 우선순위를 같는 테스크이다.
 
-## LINK
+## 참조
 
 - [MDN web docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop)
 - [How JavaScript works: inside the V8 engine + 5 tips on how to write optimized code](https://blog.sessionstack.com/how-javascript-works-inside-the-v8-engine-5-tips-on-how-to-write-optimized-code-ac089e62b12e)

@@ -1,5 +1,15 @@
 # event 버블링, 캡쳐링
 
+## Contens
+
+- [event 버블링, 캡쳐링](#event-%EB%B2%84%EB%B8%94%EB%A7%81-%EC%BA%A1%EC%B3%90%EB%A7%81)
+  - [Contens](#contens)
+  - [버블링](#%EB%B2%84%EB%B8%94%EB%A7%81)
+  - [캡쳐링](#%EC%BA%A1%EC%B3%90%EB%A7%81)
+  - [event.preventDefault()](#eventpreventdefault)
+  - [event.stopPropagation()](#eventstoppropagation)
+  - [event.stopImmediatePropagation()](#eventstopimmediatepropagation)
+
 ## 버블링
 
 - 자식 엘리먼트 -> 부모 엘리먼트 이벤트 전파

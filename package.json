@@ -4,6 +4,10 @@
         "docs:build": "vuepress build docs"
     },
     "devDependencies": {
+        "@vuepress/plugin-active-header-links": "^1.0.0-alpha.47",
+        "@vuepress/plugin-back-to-top": "^1.0.0-alpha.47",
+        "@vuepress/plugin-pagination": "^1.0.0-alpha.47",
+        "@vuepress/plugin-search": "^1.0.0-alpha.47",
         "vuepress": "^0.14.11"
     },
     "dependencies": {

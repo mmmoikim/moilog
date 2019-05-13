@@ -1,5 +1,16 @@
 # npm
 
+## Contents
+
+- [npm](#npm)
+  - [Contents](#contents)
+  - [npm 최신 버전 업그레이드](#npm-%EC%B5%9C%EC%8B%A0-%EB%B2%84%EC%A0%84-%EC%97%85%EA%B7%B8%EB%A0%88%EC%9D%B4%EB%93%9C)
+    - [패키지 경로 확인 후 수정](#%ED%8C%A8%ED%82%A4%EC%A7%80-%EA%B2%BD%EB%A1%9C-%ED%99%95%EC%9D%B8-%ED%9B%84-%EC%88%98%EC%A0%95)
+  - [npm install / update / ci](#npm-install--update--ci)
+  - [package-lock.json](#package-lockjson)
+  - [package.json version syntex](#packagejson-version-syntex)
+  - [npm 레지스트리 경로 설정](#npm-%EB%A0%88%EC%A7%80%EC%8A%A4%ED%8A%B8%EB%A6%AC-%EA%B2%BD%EB%A1%9C-%EC%84%A4%EC%A0%95)
+
 ## npm 최신 버전 업그레이드
 
 - npm 디폴트 설치 경로 (노드 설치 경로랑 같음) : C:\Program Files (x86)\nodejs

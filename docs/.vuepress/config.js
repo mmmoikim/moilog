@@ -7,7 +7,7 @@ module.exports = {
         editLinks: true,
         docsDir: 'docs',
         lastUpdated: 'Last Updated',
-        search: false,
+        search: true,
         nav: [{
             text: 'Home',
             link: '/'
@@ -31,5 +31,17 @@ module.exports = {
                 children: ['/webpack/npm']
             }
         ]
-    }
+    },
+    plugins: [
+        '@vuepress/back-to-top',
+        '@vuepress/pagination',
+        ['@vuepress/search', {
+            searchMaxSuggestions: 10
+        }],
+        ['@vuepress/active-header-links', {
+            sidebarLinkSelector: '.sidebar-link',
+            headerAnchorSelector: '.header-anchor',
+            headerTopOffset: 120
+        }]
+    ]
 }

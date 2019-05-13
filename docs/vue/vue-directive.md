@@ -1,5 +1,27 @@
 # directive
 
+## Contents
+
+- [directive](#directive)
+  - [Contents](#contents)
+  - [v-once](#v-once)
+  - [v-html](#v-html)
+  - [v-bind](#v-bind)
+  - [v-if](#v-if)
+    - [example](#example)
+  - [v-show](#v-show)
+  - [v-for](#v-for)
+  - [v-on](#v-on)
+  - [event modifiers](#event-modifiers)
+  - [key modifiers](#key-modifiers)
+  - [v-model](#v-model)
+    - [input](#input)
+    - [textarea](#textarea)
+    - [checkbox](#checkbox)
+    - [Radio](#radio)
+    - [select](#select)
+    - [v-model 수식어](#v-model-%EC%88%98%EC%8B%9D%EC%96%B4)
+
 ## v-once
 
 - data에 처음 초기화 한 값 유지, 데이터 변화가 있어도 해당 돔은 업데이트 되지 않는다.
@@ -378,7 +400,8 @@ export default {
 </select>
 ```
 
-## v-model 수식어
+### v-model 수식어
+
 - .lazy : `<input v-model.lazy="msg" >`, input이벤트 대신 change 이벤트로 데이터 변함
 - .number : `<input v-model.number="age" type="number">`, type="number로 지정해도 data에는 문자열로 들어오기 때문에 .number 쓰면 데이터에 숫자로 들어옴.
 - .trim : `<input v-model.trim="msg">`, 자동 trim, 공백 제거

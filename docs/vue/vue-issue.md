@@ -1,5 +1,18 @@
 # vue issue 정리
 
+## Contents
+
+- [vue issue 정리](#vue-issue-%EC%A0%95%EB%A6%AC)
+  - [Contents](#contents)
+  - [data 변경 감지 이슈](#data-%EB%B3%80%EA%B2%BD-%EA%B0%90%EC%A7%80-%EC%9D%B4%EC%8A%88)
+  - [computed, watch에 대해서](#computed-watch%EC%97%90-%EB%8C%80%ED%95%B4%EC%84%9C)
+  - [뷰 인스턴스 변수, 메소드 사용](#%EB%B7%B0-%EC%9D%B8%EC%8A%A4%ED%84%B4%EC%8A%A4-%EB%B3%80%EC%88%98-%EB%A9%94%EC%86%8C%EB%93%9C-%EC%82%AC%EC%9A%A9)
+  - [input 한글 바인딩 이슈](#input-%ED%95%9C%EA%B8%80-%EB%B0%94%EC%9D%B8%EB%94%A9-%EC%9D%B4%EC%8A%88)
+    - [example](#example)
+  - [뒤로가기 고려](#%EB%92%A4%EB%A1%9C%EA%B0%80%EA%B8%B0-%EA%B3%A0%EB%A0%A4)
+    - [axios-extensions](#axios-extensions)
+    - [스크롤 유지하기](#%EC%8A%A4%ED%81%AC%EB%A1%A4-%EC%9C%A0%EC%A7%80%ED%95%98%EA%B8%B0)
+
 ## data 변경 감지 이슈
 
 - `vm.items[indexOfItem] = newValue` : 인덱스로 값을 수정 할 경우 변경을 감지 하지 못한다.  
@@ -124,6 +137,7 @@ export default {
 ```
 
 ### example
+
 ---
 
 <cookbookDemoInput />
