@@ -14,6 +14,10 @@
   - [이벤트 루프와 테스트 큐](#%EC%9D%B4%EB%B2%A4%ED%8A%B8-%EB%A3%A8%ED%94%84%EC%99%80-%ED%85%8C%EC%8A%A4%ED%8A%B8-%ED%81%90)
     - [Zero delays](#zero-delays)
     - [마이크로테스크](#%EB%A7%88%EC%9D%B4%ED%81%AC%EB%A1%9C%ED%85%8C%EC%8A%A4%ED%81%AC)
+    - [Job Queue](#job-queue)
+  - [브라우저의 주요 컴포넌트](#%EB%B8%8C%EB%9D%BC%EC%9A%B0%EC%A0%80%EC%9D%98-%EC%A3%BC%EC%9A%94-%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8)
+  - [렌더링 엔진](#%EB%A0%8C%EB%8D%94%EB%A7%81-%EC%97%94%EC%A7%84)
+  - [렌더링 과정](#%EB%A0%8C%EB%8D%94%EB%A7%81-%EA%B3%BC%EC%A0%95)
   - [참조](#%EC%B0%B8%EC%A1%B0)
 
 ## 브라우저 구성
@@ -138,12 +142,82 @@ $('.btn').click(function() {
 
 ### 마이크로테스크
 
-- 프로미스는 마이크로테스크로 등록 되는데 이는 일반 태스크큐 보다 높은 우선순위를 같는 테스크이다.
+- 프로미스는 마이크로테스크로 등록 되는데 이는 일반 태스크큐 보다 높은 우선순위를 지닌 테스크이다.
+
+### Job Queue
+
+- es6에서 도입 됐으며 Promises 에서 쓰임. 마이크로테스크와는 별도의 개념.
+- 함수 안에서 프로미스가 리졸브 됐다면 그 함수가 끝나자 마자 바로 실행 된다.
+- 현재 call stack이 비워졌을때 job이 실행이 되고 다른 잡이 끼어들지 못한다
+- [참조](https://flaviocopes.com/javascript-event-loop/#es6-job-queue)
+- [참조](http://www.ecma-international.org/ecma-262/6.0/#sec-jobs-and-job-queues)
+
+## 브라우저의 주요 컴포넌트
+
+![브라우저의 주요 컴포넌트](../assets/img/javascript/how-javascript-work-4.png)
+
+- 사용자 인터페이스 : 주소바, 뒤로/앞으로가기, 북마크 등 웹페이지 보는 윈도우 빼고 브라우저에 보이는 모든부분
+- 부라우저 엔진 : 사용자 인터페이스와 렌더링 엔진 사이에 인터렉션
+- 렌더링 엔진 : 웹페이지를 노출한다. html과 css를 파싱하고 파싱된 컨텐츠를 스크린에 노출함.
+- 네크워킹 : XHR requests같은 네트워크 콜, 다양한 플랫폼을 위해 각다 다른 구현으로 만들어짐
+- UI 백엔드 : 체크박스나 윈도우 같은 주요 위젯을 그리기 위해 사용됨. 특정 플랫폼에 국한 되지 않고 일반적인 인터페이스를 노출한다.
+- javascript 엔진
+- data persistence : 로컬스토리지, indexDB, webSQL, 파일 시스템 같이 로컬저장소 제공
+
+## 렌더링 엔진
+
+- Gecko — Firefox
+- WebKit — Safari
+- Blink — Chrome, Opera (from version 15 onwards)
+
+## 렌더링 과정
+
+![렌더링 과정](../assets/img/javascript/how-javascript-work-5.png)
+
+1. DOM tree 생성
+   - 렌더링 엔진은 html 문서를 파싱해 실제 돔 노드들로 변환해서 돔트리를 만든다
+2. CSSSOM(CSS Object Model) tree 생성
+    - DOM 트리를 만드는 중에 head에서 link 태그에서 css 파일을 만나게 되면 렌더링 엔진에게 css 변환이 필요하다고 요청한다.
+    - css 속성들은 부모-자식간에 속성이 상속되기 때문에 트리구조로 관계를 설정해 각 노드의 스타일을 트리에서 재귀적으로 계산한다.
+3. 렌더 트리 생성
+   - 랜더 트리는 노출되는 순서대로 시각적 정보들을 만들어낸다.
+   - 돔 트리의 루트 노드부터 실제 노출되는 트리 만 순회 하면서 CSSOM과 매치해 계산된 스타일과 함께 노출 될 노드를 방출한다.(`display:none`,`<script>`, `<meta>` 태그는 무시)
+4. 렌더트리 레이아웃
+    - 각 랜더러(노드와 계산된 스타일을 가지고 있는 오브젝트)의 위치와 크기를 계산한다.
+    - 루트 렌더러(`<html>`) 좌표를 기준으로 재귀적으로 좌표값을 계산한다.
+5. 렌더트리 페인팅
+    - 렌더러의 `paint()` 메서드 호출
+    - 페인팅은 Global(전체 트리를 다시 그림)과 Incremental(특정 랜더러만 다시그림)가 있다
+    - 페인팅 중에 나머지 콘텐츠를 네트워크에서 계속 받아오고 파싱하면서 동시에 페인팅을 진행 한다.
+6. 스크립트 파싱
+    - `<script>` 태그를 만다면 파서는 스크립트 파싱과 스크립트 실행을 하며 파서는 작업이 끝날때 까지 대기 한다. HTML5에서는 비동기로 다른 스레드에서 스크립트 파싱과 실행을 할 수 있는 옵션을 추가 함.
+
 
 ## 참조
 
+
+- How JavaScript works 시리즈
+  1. *DONE* [How JavaScript works: an overview of the engine, the runtime, and the call stack](https://blog.sessionstack.com/how-does-javascript-actually-work-part-1-b0bacc073cf)
+  2. *DONE* [How JavaScript works: inside the V8 engine + 5 tips on how to write optimized code](https://blog.sessionstack.com/how-javascript-works-inside-the-v8-engine-5-tips-on-how-to-write-optimized-code-ac089e62b12e)
+  3. [How JavaScript works: memory management + how to handle 4 common memory leaks](https://blog.sessionstack.com/how-javascript-works-memory-management-how-to-handle-4-common-memory-leaks-3f28b94cfbec)
+  4. *DONE* [How JavaScript works: Event loop and the rise of Async programming + 5 ways to better coding with async/await](https://blog.sessionstack.com/how-javascript-works-event-loop-and-the-rise-of-async-programming-5-ways-to-better-coding-with-2f077c4438b5)
+  5. [How JavaScript works: Deep dive into WebSockets and HTTP/2 with SSE + how to pick the right path](https://blog.sessionstack.com/how-javascript-works-deep-dive-into-websockets-and-http-2-with-sse-how-to-pick-the-right-path-584e6b8e3bf7)
+  6. [How JavaScript works: A comparison with WebAssembly + why in certain cases it’s better to use it over JavaScript](https://blog.sessionstack.com/how-javascript-works-a-comparison-with-webassembly-why-in-certain-cases-its-better-to-use-it-d80945172d79)
+  7. [How JavaScript works: The building blocks of Web Workers + 5 cases when you should use them](https://blog.sessionstack.com/how-javascript-works-the-building-blocks-of-web-workers-5-cases-when-you-should-use-them-a547c0757f6a)
+  8. [How JavaScript works: Service Workers, their lifecycle and use cases](https://blog.sessionstack.com/how-javascript-works-service-workers-their-life-cycle-and-use-cases-52b19ad98b58)
+  9. [How JavaScript works: the mechanics of Web Push Notifications](https://blog.sessionstack.com/how-javascript-works-the-mechanics-of-web-push-notifications-290176c5c55d)
+  10. [How JavaScript works: tracking changes in the DOM using MutationObserver](https://blog.sessionstack.com/how-javascript-works-tracking-changes-in-the-dom-using-mutationobserver-86adc7446401)
+  11. *IMG* [How JavaScript works: the rendering engine and tips to optimize its performance](https://blog.sessionstack.com/how-javascript-works-the-rendering-engine-and-tips-to-optimize-its-performance-7b95553baeda)
+  12. [How JavaScript Works: Inside the Networking Layer + How to Optimize Its Performance and Security](https://blog.sessionstack.com/how-javascript-works-inside-the-networking-layer-how-to-optimize-its-performance-and-security-f71b7414d34c)
+  13. [How JavaScript works: Under the hood of CSS and JS animations + how to optimize their performance](https://blog.sessionstack.com/how-javascript-works-under-the-hood-of-css-and-js-animations-how-to-optimize-their-performance-db0e79586216)
+  14. [How JavaScript works: Parsing, Abstract Syntax Trees (ASTs) + 5 tips on how to minimize parse time](https://blog.sessionstack.com/how-javascript-works-parsing-abstract-syntax-trees-asts-5-tips-on-how-to-minimize-parse-time-abfcf7e8a0c8)
+  15. [How JavaScript works: The internals of classes and inheritance + transpiling in Babel and TypeScript](https://blog.sessionstack.com/how-javascript-works-the-internals-of-classes-and-inheritance-transpiling-in-babel-and-113612cdc220)
+  16. [How JavaScript works: Storage engines + how to choose the proper storage API](https://blog.sessionstack.com/how-javascript-works-storage-engines-how-to-choose-the-proper-storage-api-da50879ef576)
+  17. [How JavaScript works: the internals of Shadow DOM + how to build self-contained components](https://blog.sessionstack.com/how-javascript-works-the-internals-of-shadow-dom-how-to-build-self-contained-components-244331c4de6e)
+  18. [How JavaScript works: WebRTC and the mechanics of peer to peer networking](https://blog.sessionstack.com/how-javascript-works-webrtc-and-the-mechanics-of-peer-to-peer-connectivity-87cc56c1d0ab)
+  19. [How JavaScript works: Under the hood of custom elements + Best practices on building reusable components](https://blog.sessionstack.com/how-javascript-works-under-the-hood-of-custom-elements-best-practices-on-building-reusable-e118e888de0c)
+
+---
+
 - [MDN web docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop)
-- [How JavaScript works: inside the V8 engine + 5 tips on how to write optimized code](https://blog.sessionstack.com/how-javascript-works-inside-the-v8-engine-5-tips-on-how-to-write-optimized-code-ac089e62b12e)
-- [How JavaScript works: an overview of the engine, the runtime, and the call stack](https://blog.sessionstack.com/how-does-javascript-actually-work-part-1-b0bacc073cf)
-- [How JavaScript works: Event loop and the rise of Async programming + 5 ways to better coding with async/await](https://blog.sessionstack.com/how-javascript-works-event-loop-and-the-rise-of-async-programming-5-ways-to-better-coding-with-2f077c4438b5)
 - [toast meetup](https://meetup.toast.com/posts/89)
