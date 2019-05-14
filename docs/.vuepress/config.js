@@ -33,7 +33,7 @@ module.exports = {
         ]
     },
     plugins: [
-        '@vuepress/back-to-top',
+        ['@vuepress/back-to-top', true],
         '@vuepress/pagination',
         ['@vuepress/search', {
             searchMaxSuggestions: 10
