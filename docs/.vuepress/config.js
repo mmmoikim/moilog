@@ -2,6 +2,12 @@ module.exports = {
     title: 'MOILOG',
     description: 'mmmoilog',
     base: '/moilog/',
+    head: [
+        ['link', {
+            rel: 'stylesheet',
+            href: 'https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css'
+        }]
+    ],
     themeConfig: {
         repo: 'mmmoikim/moilog',
         editLinks: true,

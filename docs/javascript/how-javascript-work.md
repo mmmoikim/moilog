@@ -1,30 +1,8 @@
 # How javascript work
 
-## Contents
+## 브라우저의 구성과 역할
 
-- [How javascript work](#how-javascript-work)
-  - [Contents](#contents)
-  - [브라우저 구성](#%EB%B8%8C%EB%9D%BC%EC%9A%B0%EC%A0%80-%EA%B5%AC%EC%84%B1)
-  - [Node.js 구성](#nodejs-%EA%B5%AC%EC%84%B1)
-  - [브라우저 엔진](#%EB%B8%8C%EB%9D%BC%EC%9A%B0%EC%A0%80-%EC%97%94%EC%A7%84)
-    - [V8](#v8)
-    - [hidden class](#hidden-class)
-    - [인라인캐싱](#%EC%9D%B8%EB%9D%BC%EC%9D%B8%EC%BA%90%EC%8B%B1)
-  - [이벤트 루프와 테스트 큐](#%EC%9D%B4%EB%B2%A4%ED%8A%B8-%EB%A3%A8%ED%94%84%EC%99%80-%ED%85%8C%EC%8A%A4%ED%8A%B8-%ED%81%90)
-    - [Zero delays](#zero-delays)
-    - [마이크로테스크](#%EB%A7%88%EC%9D%B4%ED%81%AC%EB%A1%9C%ED%85%8C%EC%8A%A4%ED%81%AC)
-    - [Job Queue](#job-queue)
-  - [메모리 생명주기](#%EB%A9%94%EB%AA%A8%EB%A6%AC-%EC%83%9D%EB%AA%85%EC%A3%BC%EA%B8%B0)
-  - [정적 할당](#%EC%A0%95%EC%A0%81-%ED%95%A0%EB%8B%B9)
-  - [동적 할당](#%EB%8F%99%EC%A0%81-%ED%95%A0%EB%8B%B9)
-  - [가비지 콜렉터](#%EA%B0%80%EB%B9%84%EC%A7%80-%EC%BD%9C%EB%A0%89%ED%84%B0)
-  - [메모리 누수](#%EB%A9%94%EB%AA%A8%EB%A6%AC-%EB%88%84%EC%88%98)
-  - [브라우저의 주요 컴포넌트](#%EB%B8%8C%EB%9D%BC%EC%9A%B0%EC%A0%80%EC%9D%98-%EC%A3%BC%EC%9A%94-%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8)
-  - [렌더링 엔진](#%EB%A0%8C%EB%8D%94%EB%A7%81-%EC%97%94%EC%A7%84)
-  - [렌더링 과정](#%EB%A0%8C%EB%8D%94%EB%A7%81-%EA%B3%BC%EC%A0%95)
-  - [참조](#%EC%B0%B8%EC%A1%B0)
-
-## 브라우저 구성
+### 브라우저 구성
 
 ![브라우저](../assets/img/javascript/how-javascript-work-1.png)
 
@@ -32,13 +10,13 @@
 - 이벤트루프와 태스트큐 : 엔진 외부에 구현되어 있고 비동기 방식으로 동시성을 제공한다.
 - javascript 엔진 : 메모리 힙과 콜스택으로 구성된다.
 
-## Node.js 구성
+### Node.js 구성
 
 ![Node.js](../assets/img/javascript/how-javascript-work-2.jpg)
 
 - api 콜백을 LIBUV(node.js 비동기 IO 라이브러리)가 지원하는 이벤트 루프에서 처리한다.
 
-## 브라우저 엔진
+### 브라우저 엔진
 
 ![브라우저엔진](../assets/img/javascript/how-javascript-work-3.png)
 
@@ -67,7 +45,10 @@
   - 가비지콜렉터를 다루는 스레드
 - 코드를 실행하면 full-codegen가 바로 기계코드로 변환하고  
   프로파일러 스레드는 메소드에게 최적화 된 데이터들을 모은다.  
-  Crankshaft는 다른 스레드에서 실행되며, 자바스크립트 추상 구문 트리를 Hydrogen 이라는 고수준 정적 단일 할당 (SSA) 표현 으로 변환하고 Hydrogen graph를 최적화 한다
+- Crankshaft는 다른 스레드에서 실행되며  
+    자바스크립트 abstract syntax tree를 static single-assignment 정적 단일 할당 (SSA) 으로 불리는 Hydrogen 로 변환하고 (SSA는 컴파일러 안에서 중간언어로 사용된다)
+    인라이닝, Hydrogen graph 최적화를 한 후 기계어로 변환한다.
+- [Crankshaft](https://wingolog.org/archives/2011/08/02/a-closer-look-at-crankshaft-v8s-optimizing-compiler)
 
 ### hidden class
 
@@ -84,7 +65,7 @@
 - 두번의 호출에서 한 메소드에서 같은 객체에 접근했다면 그 객체의 히든클래스를 참조하는 것을 건너 뛰고 스스로 해당 메소드 객체 포인터 속성에 오프셋을 저장해 놓는다.
 - 값을 접근하는 순서에 따라 히든클래스가 달라지기 때문에 캐싱을 사용하지 못하는 경우가 있다.
 
-## 이벤트 루프와 테스트 큐
+### 이벤트 루프와 테스트 큐
 
 - 모든 비동기 함수는 콜백 함수를 태스크 큐에 추가한다.
 - 이벤트 루프는 '현재 실행중인 태스크가 없을 때'(주로 호출 스택이 비워졌을 때) 태스크 큐의 첫 번째 태스크를 꺼내와 실행한다.
@@ -150,19 +131,19 @@ $('.btn').click(function() {
 
 ---
 
-## 메모리 생명주기
+## 메모리 할당
 
 1. allocate : 프로그램이 사용할 수 있도록 운영체제가 메모리는 할당
 2. use : 코드 상에서 할당 된 변수를 사용함으로써 메모리에 읽기와 쓰기 작업을 한다.
 3. release : 필요 없는 자원을 해제한다.
 
-## 정적 할당
+### 정적 할당
 
 - 코드를 컴파일하며 컴파일러는 필요한 메모리를 계산해 `stack space` 라는 곳에서 프로그램을 할당 한다.
 - 함수에서 함수를 부를 때 함수 각 각 불려지는 시점에 자신의 로컬 변수를 포함하는 스택청크를 가지게 되고  
  실행중인 부분을 프로그램 카운터가 기억한다. 그리고 함수가 끝나면 이 메모리 블럭은 해제된다.
 
-## 동적 할당
+### 동적 할당
 
 - 컴파일러가 정확한 메모리 공간을 계산하지 못한다면 힙영역에 적당한 공간을 요청한다.
 
@@ -170,7 +151,7 @@ $('.btn').click(function() {
 
 - javscript는 숫자, 문자, 객체, 배열, 함수에 대해서 스스로 할당 한다.
 
-## 가비지 콜렉터
+### 가비지 콜렉터
 
 - 메모리 할당을 추적하고 할당된 메모리가 더이상 필요 없어졌을때 해제하는 작업을 한다.
 - Reference-counting 알고리즘 : 아무도 참조하지 않는 오브젝트가 있다면 가비지 콜렉션을 수행한다. 인터넷 익스플로러 6, 7 에서 쓰임
@@ -178,7 +159,8 @@ $('.btn').click(function() {
 - Mark-and-sweep 알고리즘 : 주기적으로 가비지 콜렉터는 오브젝트 집합의 roots(window객체)에서 시작해 닿을 수 없는 오브젝트에 대해 수행한다. 순환참조의 한계점을 극복할 수 있다.
 - [mozilla](https://developer.mozilla.org/ko/docs/Web/JavaScript/Memory_Management)
 
-## 메모리 누수
+### 메모리 누수
+
 - 어떤 메모리가 사용 중 인지 아닌지는 non-determinism, 결정할 수 없다.
 - 가비지 콜렉터는 닿을 수 없는 상태여도 메모리에 할당이 일어나지 않으면 수집하지 않는다.
 - 메모리 누수는 프로그램에서 사용했다가 더 이상 필요하지 않은 상태가 되었을 때 반환되지 않은 메모리를 말한다.
@@ -224,8 +206,124 @@ $('.btn').click(function() {
    - 돔 노드에 대한 참조가 있는 변수는 돔이 삭제될때 같이 제거해 줘야한다.
    - 돔 트리에 리프노드나 자식노드를 참조할 때 만약 부모 돔을 제거 하고 참조가 남아있다면 부모돔트리 전체가 메모리에 남아있게 된다.
 
+---
 
-## 브라우저의 주요 컴포넌트
+## 네크워크 통신
+
+### long polling
+
+- 롤 폴링은 클라이언트가 HTTP Connection을 열어 놓고 서버 데이터를 받는 것을 말한다.
+- 이 방법은 오버헤드가 존재하기 때문에 응답시간이 짧아야 하는 서비스에는 적절하지 못하다.
+
+```js
+(function poll(){
+   setTimeout(function(){
+      $.ajax({ 
+        url: 'https://api.example.com/endpoint', 
+        success: function(data) {
+          // Do something with `data`
+          // ...
+
+          //Setup the next poll recursively
+          poll();
+        }, 
+        dataType: 'json'
+      });
+  }, 10000);
+})();
+```
+
+### webSocket
+
+- 웹소켓은 **handshake** 프로세스로 작동한다.
+
+1. 클라이언트는 웹소켓 연결을 원한다는 의미로 헤더에 `Upgrade`을 설정 해 HTTP request를 서버에 보낸다.
+
+```
+GET ws://websocket.example.com/ HTTP/1.1
+Origin: http://example.com
+Connection: Upgrade
+Host: websocket.example.com
+Upgrade: websocket
+```
+
+- websocket URL은 `ws`, `wss` 스키마를 사용한다. ws은 암호화 되지 않은 80포트, wss는 TLS 암호화 된 443포트를 사용
+
+```js
+var socket = new WebSocket('ws://websocket.example.com');
+```
+
+1. 연결이 되었다면 서버는 업그레이드로 응답
+
+```
+HTTP/1.1 101 Switching Protocols
+Date: Wed, 25 Oct 2017 10:07:34 GMT
+Connection: Upgrade
+Upgrade: WebSocket
+```
+
+3. 클라이언트는 `open` 이벤트 발생
+
+```js
+socket.onopen = function(event) {
+  console.log('WebSocket is connected.');
+};
+```
+
+- 핸드 쉐이크가 끝나면 HTTP connection 이 websocket connection으로 대체되고 TCP/IP를 사용한다.
+- 전송되는 메세지는 하나이상의 프레임으로 구성되어있고 프레임에는 보내고자하는 데이터 페이로드와 프리픽스가 들어있다. 프레임 시스템은 non-payload data의 양을 크게 줄일 수 있다.
+
+### 웹소켓의 프레임
+
+- 프레이밍 프로토콜은 복잡한 헤더를 가지고 있다.
+- 헤더에는 전송 데이터 종류는 나타내는 코드 `opcode`가 있다.
+    (`0x00` : 이전 프레임 연장, `0x01` : 텍스트, `0x02` : 바이너리, `0x08` : 연장종료, `0x09` : 핑, `0x0a` 퐁)
+- 페이로드 데이터는 여러 프레임으로 나눌 수 있고 헤더에 `fin`(최종프레임여부) 비트가 설정되지 않고 `opcode`가 `0x00`이면(이전 프레임 연장) 계속 받을 수 있기 때문에 크기를 미리 알 수 없어도 되고 멀티플렉싱(여러 채널이 출력)이 가능하다.
+  
+### 허트비트
+
+- 특정 시점에서 한쪽에서 핑을 보내면 다른쪽에서 퐁을 보내야 한다. 허트비트를 통해서 연결일 확인 할 수 있다.
+
+### HTTP/2 + SSE
+
+- HTTP/2 서버 푸시는 서버가 클라이언트 캐시에 리소스를 사전에 전송하는 것으로 웹소켓처럼 어플리케이션 코드에서 이벤트로 가져올 수 없다.  
+
+![HTTP nomal communication](../assets/img/javascript/how-javascript-work-9.png)
+![HTTP/2 server push](../assets/img/javascript/how-javascript-work-10.png)
+
+- 실시간 서비스를 위해서는 Server-Sent Events (SSE)를 사용해야한다.
+- SSE는 커넥트가 되어 있으면 서버가 데이터를 푸시 할 수 있다. (one-way publish-subscribe model)
+- 클라이언트는 객체를 서버로 부터 스트림을 받아 `EventSource`로 데이터를 받아온다.
+
+```js
+var es = new EventSource(stream_url);
+
+es.onmessage = function (event) {
+    // 이벤트 설정이안된 기본 데이터 처리
+};
+es.addEventListener('myevent', function(e) {
+    // 'myevent' 이벤트의 데이터 처리
+}, false);
+```
+
+- http2는 멀티플랙스로 한 연결에 SSE 스트림을 동시에 여러개 포함할 수 있다.
+![HTTP/2 멀티플랙스](../assets/img/javascript/how-javascript-work-11.png)
+
+- 양쪽으로 많은 양의 메세지가 교환되고 멀티 플레이어인 경우, 지연시간이 낮아서 실시간을 기대하는 상황에서는 websocket이 어울리지만 뉴스라던가 데이터를 열람하는 서비스이라면 HTTP2 + SSE를 사용해도 좋다.
+- 웹소켓은 HTTP연결을 변경시켜 사용하기 때문은 기존 웹 인프라와 호환성 문제를 걱정해야하고 HTTP2 + SSE는 브라우저 호환성이 웹소켓보다 좋지 않다.
+
+---
+
+## 웹어셈블리
+
+- 웹 어셈블리는 low-level에 바이트코드로 자바스크립트가 아닌 다른언어를 사용해 작성하고 컴파일 할 수 있고 그 결과로 웹앱을 빠르게 로드하고 실행할 수 있다.
+- (IMG)
+
+---
+
+## 렌더링 엔진
+
+### 브라우저의 주요 컴포넌트
 
 ![브라우저의 주요 컴포넌트](../assets/img/javascript/how-javascript-work-4.png)
 
@@ -237,13 +335,13 @@ $('.btn').click(function() {
 - javascript 엔진
 - data persistence : 로컬스토리지, indexDB, webSQL, 파일 시스템 같이 로컬저장소 제공
 
-## 렌더링 엔진
+### 렌더링 엔진
 
 - Gecko — Firefox
 - WebKit — Safari
 - Blink — Chrome, Opera (from version 15 onwards)
 
-## 렌더링 과정
+### 렌더링 과정
 
 ![렌더링 과정](../assets/img/javascript/how-javascript-work-5.png)
 
@@ -265,16 +363,14 @@ $('.btn').click(function() {
 6. 스크립트 파싱
     - `<script>` 태그를 만다면 파서는 스크립트 파싱과 스크립트 실행을 하며 파서는 작업이 끝날때 까지 대기 한다. HTML5에서는 비동기로 다른 스레드에서 스크립트 파싱과 실행을 할 수 있는 옵션을 추가 함.
 
-
 ## 참조
-
 
 - How JavaScript works 시리즈
   1. *DONE* [How JavaScript works: an overview of the engine, the runtime, and the call stack](https://blog.sessionstack.com/how-does-javascript-actually-work-part-1-b0bacc073cf)
   2. *DONE* [How JavaScript works: inside the V8 engine + 5 tips on how to write optimized code](https://blog.sessionstack.com/how-javascript-works-inside-the-v8-engine-5-tips-on-how-to-write-optimized-code-ac089e62b12e)
   3. *DONE* [How JavaScript works: memory management + how to handle 4 common memory leaks](https://blog.sessionstack.com/how-javascript-works-memory-management-how-to-handle-4-common-memory-leaks-3f28b94cfbec)
   4. *DONE* [How JavaScript works: Event loop and the rise of Async programming + 5 ways to better coding with async/await](https://blog.sessionstack.com/how-javascript-works-event-loop-and-the-rise-of-async-programming-5-ways-to-better-coding-with-2f077c4438b5)
-  5. [How JavaScript works: Deep dive into WebSockets and HTTP/2 with SSE + how to pick the right path](https://blog.sessionstack.com/how-javascript-works-deep-dive-into-websockets-and-http-2-with-sse-how-to-pick-the-right-path-584e6b8e3bf7)
+  5. *DONE* [How JavaScript works: Deep dive into WebSockets and HTTP/2 with SSE + how to pick the right path](https://blog.sessionstack.com/how-javascript-works-deep-dive-into-websockets-and-http-2-with-sse-how-to-pick-the-right-path-584e6b8e3bf7)
   6. [How JavaScript works: A comparison with WebAssembly + why in certain cases it’s better to use it over JavaScript](https://blog.sessionstack.com/how-javascript-works-a-comparison-with-webassembly-why-in-certain-cases-its-better-to-use-it-d80945172d79)
   7. [How JavaScript works: The building blocks of Web Workers + 5 cases when you should use them](https://blog.sessionstack.com/how-javascript-works-the-building-blocks-of-web-workers-5-cases-when-you-should-use-them-a547c0757f6a)
   8. [How JavaScript works: Service Workers, their lifecycle and use cases](https://blog.sessionstack.com/how-javascript-works-service-workers-their-life-cycle-and-use-cases-52b19ad98b58)
@@ -294,3 +390,4 @@ $('.btn').click(function() {
 
 - [MDN web docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop)
 - [toast meetup](https://meetup.toast.com/posts/89)
+- [브라우저는 어떻게 동작하는가?](https://d2.naver.com/helloworld/59361)
