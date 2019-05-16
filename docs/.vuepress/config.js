@@ -30,7 +30,18 @@ module.exports = {
             }, {
                 title: 'javascript',
                 collapsable: true,
-                children: ['/javascript/this', '/javascript/lodash', '/javascript/bubble-capture', '/javascript/how-javascript-work']
+                children: [
+                    '/javascript/this',
+                    '/javascript/lodash',
+                    '/javascript/bubble-capture',
+                    '/javascript/hjw-1-browser',
+                    '/javascript/hjw-2-memory',
+                    '/javascript/hjw-3-websocket',
+                    '/javascript/hjw-4-wasm',
+                    '/javascript/hjw-5-webworker',
+                    '/javascript/hjw-rendering',
+                    '/javascript/hjw-references'
+                ]
             }, {
                 title: 'webpack',
                 collapsable: true,
