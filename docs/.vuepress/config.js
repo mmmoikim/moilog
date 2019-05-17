@@ -1,6 +1,8 @@
+const path = require('path');
+
 module.exports = {
     title: 'MOILOG',
-    description: 'mmmoilog',
+    description: 'Hello! I\'m web developer. this is study blog.',
     base: '/moilog/',
     head: [
         ['link', {
@@ -12,7 +14,7 @@ module.exports = {
         repo: 'mmmoikim/moilog',
         editLinks: true,
         docsDir: 'docs',
-        lastUpdated: 'Last Updated',
+        lastUpdated: true,
         search: true,
         nav: [{
             text: 'Home',
@@ -21,33 +23,42 @@ module.exports = {
         sidebar: [{
                 title: 'WEB',
                 collapsable: true,
-                children: ['/web/bfcache']
+                children: ['/post/web/bfcache']
             },
             {
                 title: 'VUE',
                 collapsable: true,
-                children: ['/vue/vuepress', '/vue/vue-directive', '/vue/vue-issue']
+                children: ['/post/vue/vuepress', '/post/vue/vue-directive', '/post/vue/vue-issue']
             }, {
                 title: 'javascript',
                 collapsable: true,
                 children: [
-                    '/javascript/this',
-                    '/javascript/lodash',
-                    '/javascript/bubble-capture',
-                    '/javascript/hjw-1-browser',
-                    '/javascript/hjw-2-memory',
-                    '/javascript/hjw-3-websocket',
-                    '/javascript/hjw-4-wasm',
-                    '/javascript/hjw-5-webworker',
-                    '/javascript/hjw-rendering',
-                    '/javascript/hjw-references'
+                    '/post/javascript/this',
+                    '/post/javascript/lodash',
+                    '/post/javascript/bubble-capture',
+                    '/post/javascript/hjw-1-browser',
+                    '/post/javascript/hjw-2-memory',
+                    '/post/javascript/hjw-3-websocket',
+                    '/post/javascript/hjw-4-wasm',
+                    '/post/javascript/hjw-5-webworker',
+                    '/post/javascript/hjw-rendering',
+                    '/post/javascript/hjw-references'
                 ]
             }, {
-                title: 'webpack',
+                title: 'Environment',
                 collapsable: true,
-                children: ['/webpack/npm']
+                children: ['/post/environment/npm']
             }
         ]
+    },
+    configureWebpack() {
+        return {
+            resolve: {
+                alias: {
+                    '@assets': path.join(__dirname, '/../assets')
+                }
+            }
+        }
     },
     plugins: [
         ['@vuepress/back-to-top', true],

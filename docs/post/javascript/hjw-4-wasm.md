@@ -1,5 +1,12 @@
 # (HJW) 4. 웹어셈블리
 
+- [(HJW) 4. 웹어셈블리](#hjw-4-%EC%9B%B9%EC%96%B4%EC%85%88%EB%B8%94%EB%A6%AC)
+  - [webAssembly](#webassembly)
+  - [javascript vs webAssembly](#javascript-vs-webassembly)
+  - [wasm 메모리](#wasm-%EB%A9%94%EB%AA%A8%EB%A6%AC)
+  - [wasm 가비지 콜렉트](#wasm-%EA%B0%80%EB%B9%84%EC%A7%80-%EC%BD%9C%EB%A0%89%ED%8A%B8)
+  - [references](#references)
+
 ## webAssembly
 
 - 웹 어셈블리는 바이트 코드로 자바스크립트가 아닌 다른언어로 작성, 컴파일해서 웹 앱을 빠르게 로드하고 실행할 수 있다.
@@ -10,14 +17,14 @@
 
 ## javascript vs webAssembly
 
-![v8](../assets/img/javascript/how-javascript-work-12.png)
+![v8](~@assets/img/javascript/how-javascript-work-12.png)
 
 - 자바스크립트는 모든 문자열를 토큰으로 변환해서 Abstract Syntax Tree (AST)를 생성하고 기계어로 변환한다.
-![v8 터보팬](../assets/img/javascript/how-javascript-work-13.png)
+![v8 터보팬](~@assets/img/javascript/how-javascript-work-13.png)
 - 그 후 터보팬이라는 최적화 컴파일러가 앱이 실행되고 있을 때 병목현상이나 최적화 할 스팟이 있는지 모니터링 한다.
 - CPU를 많이 사용하고 있던 function이 있으면 백앤드로 밀어 넣고 더 빠른 코드로 JIT 컴파일(just in time, 프로그램 실행 시점에 바로 기계어로 컴파일)하여 최적화 한다.
 - 하지만 코드를 분석하고 최적화 할 것을 정하는 프로세스 또한 CPU를 잡아먹는다. 이 때문에 모바일에서 배터리 소모가 더 일어 날 수 있다.
-![wasm](../assets/img/javascript/how-javascript-work-14.png)
+![wasm](~@assets/img/javascript/how-javascript-work-14.png)
 - wasm는 이미 컴파일 될 때 최적화가 되고 파싱도 필요 없다.
 
 ## wasm 메모리

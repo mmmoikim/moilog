@@ -1,8 +1,13 @@
 # (HJW) rendering
 
+- [(HJW) rendering](#hjw-rendering)
+  - [브라우저의 주요 컴포넌트](#%EB%B8%8C%EB%9D%BC%EC%9A%B0%EC%A0%80%EC%9D%98-%EC%A3%BC%EC%9A%94-%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8)
+  - [렌더링 엔진](#%EB%A0%8C%EB%8D%94%EB%A7%81-%EC%97%94%EC%A7%84)
+  - [렌더링 과정](#%EB%A0%8C%EB%8D%94%EB%A7%81-%EA%B3%BC%EC%A0%95)
+
 ## 브라우저의 주요 컴포넌트
 
-![브라우저의 주요 컴포넌트](../assets/img/javascript/how-javascript-work-4.png)
+![브라우저의 주요 컴포넌트](~@assets/img/javascript/how-javascript-work-4.png)
 
 - 사용자 인터페이스 : 주소바, 뒤로/앞으로가기, 북마크 등 웹페이지 보는 윈도우 빼고 브라우저에 보이는 모든부분
 - 부라우저 엔진 : 사용자 인터페이스와 렌더링 엔진 사이에 인터렉션
@@ -20,7 +25,7 @@
 
 ## 렌더링 과정
 
-![렌더링 과정](../assets/img/javascript/how-javascript-work-5.png)
+![렌더링 과정](~@assets/img/javascript/how-javascript-work-5.png)
 
 1. DOM tree 생성
    - 렌더링 엔진은 html 문서를 파싱해 실제 돔 노드들로 변환해서 돔트리를 만든다

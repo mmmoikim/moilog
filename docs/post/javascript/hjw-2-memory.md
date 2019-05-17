@@ -1,5 +1,12 @@
 # (HJW) 2. 메모리
 
+- [(HJW) 2. 메모리](#hjw-2-%EB%A9%94%EB%AA%A8%EB%A6%AC)
+  - [정적 할당](#%EC%A0%95%EC%A0%81-%ED%95%A0%EB%8B%B9)
+  - [동적 할당](#%EB%8F%99%EC%A0%81-%ED%95%A0%EB%8B%B9)
+  - [가비지 콜렉터](#%EA%B0%80%EB%B9%84%EC%A7%80-%EC%BD%9C%EB%A0%89%ED%84%B0)
+  - [메모리 누수](#%EB%A9%94%EB%AA%A8%EB%A6%AC-%EB%88%84%EC%88%98)
+  - [reference](#reference)
+
 ## 정적 할당
 
 - 코드를 컴파일하며 컴파일러는 필요한 메모리를 계산해 `stack space` 라는 곳에서 프로그램을 할당 한다.
@@ -10,7 +17,7 @@
 
 - 컴파일러가 정확한 메모리 공간을 계산하지 못한다면 힙영역에 적당한 공간을 요청한다.
 
-![정적, 동적할당 차이](../assets/img/javascript/how-javascript-work-8.png)
+![정적, 동적할당 차이](~@assets/img/javascript/how-javascript-work-8.png)
 
 - javscript는 숫자, 문자, 객체, 배열, 함수에 대해서 스스로 할당 한다.
 

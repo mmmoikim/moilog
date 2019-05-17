@@ -1,5 +1,12 @@
 # (HJW) 3. websockek과 HTTP/2 + SSE
 
+- [(HJW) 3. websockek과 HTTP/2 + SSE](#hjw-3-websockek%EA%B3%BC-http2--sse)
+  - [long polling](#long-polling)
+  - [webSocket](#websocket)
+  - [웹소켓의 프레임](#%EC%9B%B9%EC%86%8C%EC%BC%93%EC%9D%98-%ED%94%84%EB%A0%88%EC%9E%84)
+  - [HTTP/2 + SSE](#http2--sse)
+  - [reference](#reference)
+
 ## long polling
 
 - 롤 폴링은 클라이언트가 HTTP Connection을 열어 놓고 서버 데이터를 받는 것을 말한다.
@@ -75,8 +82,8 @@ socket.onopen = function(event) {
 
 - HTTP/2 서버 푸시는 서버가 클라이언트 캐시에 리소스를 사전에 전송하는 것으로 웹소켓처럼 어플리케이션 코드에서 이벤트로 가져올 수 없다.  
 
-![HTTP nomal communication](../assets/img/javascript/how-javascript-work-9.png)
-![HTTP/2 server push](../assets/img/javascript/how-javascript-work-10.png)
+![HTTP nomal communication](~@assets/img/javascript/how-javascript-work-9.png)
+![HTTP/2 server push](~@assets/img/javascript/how-javascript-work-10.png)
 
 - 실시간 서비스를 위해서는 Server-Sent Events (SSE)를 사용해야한다.
 - SSE는 커넥트가 되어 있으면 서버가 데이터를 푸시 할 수 있다. (one-way publish-subscribe model)
@@ -94,7 +101,7 @@ es.addEventListener('myevent', function(e) {
 ```
 
 - http2는 멀티플랙스로 한 연결에 SSE 스트림을 동시에 여러개 포함할 수 있다.
-![HTTP/2 멀티플랙스](../assets/img/javascript/how-javascript-work-11.png)
+![HTTP/2 멀티플랙스](~@assets/img/javascript/how-javascript-work-11.png)
 
 - 양쪽으로 많은 양의 메세지가 교환되고 멀티 플레이어인 경우, 지연시간이 낮아서 실시간을 기대하는 상황에서는 websocket이 어울리지만 뉴스라던가 데이터를 열람하는 서비스이라면 HTTP2 + SSE를 사용해도 좋다.
 - 웹소켓은 HTTP연결을 변경시켜 사용하기 때문은 기존 웹 인프라와 호환성 문제를 걱정해야하고 HTTP2 + SSE는 브라우저 호환성이 웹소켓보다 좋지 않다.

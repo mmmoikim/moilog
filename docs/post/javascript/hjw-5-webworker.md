@@ -1,5 +1,14 @@
 # (HJW) 5. webworker
 
+- [(HJW) 5. webworker](#hjw-5-webworker)
+  - [비동기 함수의 한계](#%EB%B9%84%EB%8F%99%EA%B8%B0-%ED%95%A8%EC%88%98%EC%9D%98-%ED%95%9C%EA%B3%84)
+  - [web worker](#web-worker)
+  - [web worker type](#web-worker-type)
+  - [Dedicated web worker 구현](#dedicated-web-worker-%EA%B5%AC%ED%98%84)
+    - [`postMessage()`를 이용한 방법](#postmessage%EB%A5%BC-%EC%9D%B4%EC%9A%A9%ED%95%9C-%EB%B0%A9%EB%B2%95)
+    - [`BroadcastChannel()`를 이용한 방법](#broadcastchannel%EB%A5%BC-%EC%9D%B4%EC%9A%A9%ED%95%9C-%EB%B0%A9%EB%B2%95)
+  - [reference](#reference)
+
 ## 비동기 함수의 한계
 
 - 만약 비동기 콜백 안에 오래 걸리는 작업이 있다면(엄청 큰 for loop 같이) 이벤트 루프를 해제하고 UI 랜더링을 하게 만드는 방법이 없을까?
@@ -102,7 +111,7 @@ bc.onmessage = function (e) {
 bc.close()
 ```
 
-![BroadcastChannel](../assets/img/javascript/how-javascript-work-15.png)
+![BroadcastChannel](~@assets/img/javascript/how-javascript-work-15.png)
 
 ## reference
 

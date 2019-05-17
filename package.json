@@ -11,6 +11,7 @@
         "vuepress": "^0.14.11"
     },
     "dependencies": {
+        "@vuepress/plugin-last-updated": "^1.0.0-alpha.0",
         "file-loader": "^3.0.1",
         "webpack-dev-middleware": "^3.6.0"
     }
