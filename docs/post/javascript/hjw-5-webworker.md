@@ -1,3 +1,7 @@
+---
+date : 2019-05-17 13:52:00
+---
+
 # (HJW) 5. webworker
 
 - [(HJW) 5. webworker](#hjw-5-webworker)

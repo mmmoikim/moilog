@@ -11,14 +11,18 @@ module.exports = {
         }]
     ],
     themeConfig: {
+        logo: '/logo.png',
         repo: 'mmmoikim/moilog',
         editLinks: true,
         docsDir: 'docs',
-        lastUpdated: true,
+        lastUpdated: 'Last Updated',
         search: true,
         nav: [{
             text: 'Home',
             link: '/'
+        }, {
+            text: 'Post',
+            link: '/post/list.html'
         }],
         sidebar: [{
                 title: 'WEB',
@@ -61,6 +65,7 @@ module.exports = {
         }
     },
     plugins: [
+        ['@vuepress/last-updated'],
         ['@vuepress/back-to-top', true],
         '@vuepress/pagination',
         ['@vuepress/search', {

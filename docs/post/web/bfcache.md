@@ -1,7 +1,8 @@
+---
+date : 2019-04-04 16:55:00
+---
 
 # bfcache
-
-### bfcache ( back forward cache )
 
 네비게이팅 될 때 자바스크립트 힙, 랜더 된 이미지, 스크롤 위치, DOM 을 캐싱 한 후 뒤로가기/앞으로가기로 돌아 왔을 때 restored 됨
 

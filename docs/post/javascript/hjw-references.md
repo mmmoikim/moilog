@@ -1,3 +1,7 @@
+---
+date : 2019-05-02 13:52:00
+---
+
 # (HJW) references
 
 - How JavaScript works 시리즈

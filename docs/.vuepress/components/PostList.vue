@@ -14,16 +14,19 @@ export default {
   },
   computed: {
     postList() {
-      let postList = [];
       if (this.list && this.list.length > 0) {
-        postList = this.list.filter((item) => {
+        return this.list.filter((item) => {
           return item.path.indexOf("/post/") > -1
-        })
+        }).sort((a, b) => new Date(b.frontmatter.date) - new Date(a.frontmatter.date))
       }
-      return postList;
     }
   },
   methods: {
+    onClickItem(item) {
+      this.$router.push({
+        path: item.path
+      })
+    }
   }
 }
 </script>
@@ -32,10 +35,8 @@ export default {
   <div>
     <h2>Most Recent</h2>
     <ul>
-      <li v-for="(item, index) in postList">
-        <span>
-          {{item.title}}
-        </span>
+      <li v-for="(item, index) in postList" @click="onClickItem(item)">
+        {{item.title}}
       </li>
     </ul>
   </div>

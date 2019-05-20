@@ -1,8 +1,8 @@
 ---
 home: true
-# heroImage: /hero.png
+heroImage: /logo.png
 actionText: GO TO POST LIST →
-actionLink: /view/list
+actionLink: /post/list.html
 # features:
 # - title: Simplicity First
 #   details: Minimal setup with markdown-centered project structure helps you focus on writing.
