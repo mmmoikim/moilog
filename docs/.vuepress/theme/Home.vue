@@ -46,8 +46,9 @@ export default {
 @import './styles/config.styl';
 
 .home {
-  padding: $navbarHeight 2rem 0;
-  max-width: 960px;
+  min-width: 100vw;
+  min-height: 100vh;
+  overflow: hidden;
   margin: 0px auto;
 
   .hero {
@@ -151,9 +152,6 @@ export default {
 
 @media (max-width: $MQMobileNarrow) {
   .home {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-
     .hero {
       img {
         max-height: 210px;
@@ -169,11 +167,11 @@ export default {
       }
 
       .description {
-        font-size: 0.3rem;
+        font-size: 1rem;
       }
 
       .action-button {
-        font-size: 0.3rem;
+        font-size: 1rem;
         padding: 0.6rem 1.2rem;
       }
     }
