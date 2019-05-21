@@ -69,7 +69,7 @@ export default {
 
     .description {
       font-family: 'Roboto', sans-serif;
-      font-size: 12px;
+      font-size: 0.3rem;
       text-transform: uppercase;
       letter-spacing: 2.5px;
       font-weight: 500;
@@ -79,7 +79,7 @@ export default {
     .action-button {
       display: inline-block;
       font-family: 'Roboto', sans-serif;
-      font-size: 10px;
+      font-size: 0.3rem;
       text-transform: uppercase;
       letter-spacing: 2.5px;
       font-weight: 500;
@@ -169,11 +169,11 @@ export default {
       }
 
       .description {
-        font-size: 1.2rem;
+        font-size: 0.3rem;
       }
 
       .action-button {
-        font-size: 1rem;
+        font-size: 0.3rem;
         padding: 0.6rem 1.2rem;
       }
     }

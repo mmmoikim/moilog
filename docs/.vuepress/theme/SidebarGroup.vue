@@ -48,8 +48,8 @@ export default {
   font-size: 12px;
   text-transform: uppercase;
   letter-spacing: 2.5px;
-  font-weight: 500;
-  color: #646464;
+  font-weight: 400 !important;
+  color: #646464 !important;
   transition: color 0.15s ease;
   cursor: pointer;
   // text-transform uppercase

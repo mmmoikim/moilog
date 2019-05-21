@@ -13,6 +13,7 @@
     "dependencies": {
         "@vuepress/plugin-last-updated": "^1.0.0-alpha.0",
         "file-loader": "^3.0.1",
+        "moment": "^2.24.0",
         "stylus-loader": "^3.0.2",
         "webpack-dev-middleware": "^3.6.0"
     }
