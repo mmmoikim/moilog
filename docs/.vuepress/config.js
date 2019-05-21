@@ -4,12 +4,6 @@ module.exports = {
     title: 'MOILOG',
     description: 'Hello! I\'m web developer. this is study blog.',
     base: '/moilog/',
-    head: [
-        ['link', {
-            rel: 'stylesheet',
-            href: 'https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css'
-        }]
-    ],
     themeConfig: {
         logo: '/logo.png',
         repo: 'mmmoikim/moilog',
@@ -51,7 +45,10 @@ module.exports = {
             }, {
                 title: 'Environment',
                 collapsable: true,
-                children: ['/post/environment/npm']
+                children: [
+                    '/post/environment/npm',
+                    '/post/environment/markdown'
+                ]
             }
         ]
     },
