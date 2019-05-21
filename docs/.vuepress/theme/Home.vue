@@ -84,7 +84,7 @@ export default {
       letter-spacing: 2.5px;
       font-weight: 500;
       color: #787878;
-      background-color: $accentColor;
+      background-color: #fff;
       padding: 0.8rem 1.6rem;
       border-radius: 4px;
       transition: background-color 0.1s ease;

@@ -26,6 +26,7 @@ body
 
 .page
   height 100%
+  min-height 100vh
   padding-left $sidebarWidth
 
 .navbar
@@ -58,7 +59,6 @@ body
   left 0
   bottom 0
   box-sizing border-box
-  border-right 1px solid $borderColor
   overflow-y auto
 
 .content:not(.custom)
@@ -85,7 +85,7 @@ body
 
 a
   font-weight 400
-  color #0081b2
+  color #6C3573
   text-decoration none
 
 p a code
@@ -177,6 +177,7 @@ th, td
   padding-top $navbarHeight
 
 .theme-container
+  min-height 100vh
   height 100%
   &.sidebar-open
     .sidebar-mask

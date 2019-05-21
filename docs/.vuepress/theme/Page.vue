@@ -166,6 +166,7 @@ function find(page, items, offset) {
   padding: 0;
   margin: 0;
   height: 100%;
+  min-height: 100vh;
   background: rgba(255, 255, 255, 0.7);
 }
 
