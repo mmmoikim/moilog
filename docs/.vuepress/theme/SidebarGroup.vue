@@ -49,7 +49,7 @@ export default {
   text-transform: uppercase;
   letter-spacing: 2.5px;
   font-weight: 500;
-  color: #fff;
+  color: #646464;
   transition: color 0.15s ease;
   cursor: pointer;
   // text-transform uppercase

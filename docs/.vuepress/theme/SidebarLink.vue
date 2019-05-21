@@ -65,6 +65,8 @@ function renderChildren(h, children, path, route, maxDepth, depth = 1) {
 }
 
 a.sidebar-link {
+  font-family: 'Roboto', sans-serif;
+  font-size: 13px;
   font-weight: 400;
   display: inline-block;
   color: $textColor;

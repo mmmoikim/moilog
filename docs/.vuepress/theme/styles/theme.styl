@@ -9,6 +9,7 @@
 html, body
   padding 0
   margin 0
+  height 100%
   background-image linear-gradient(to left, #3A1C71, #D76D77, #FFAF7B)
   -webkit-background-size cover
   -moz-background-size cover
@@ -16,14 +17,15 @@ html, body
   background-size cover
 
 body
+  height 100%
   font-family -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif
   -webkit-font-smoothing antialiased
   -moz-osx-font-smoothing grayscale
   font-size 16px
   color $textColor
 
-
 .page
+  height 100%
   padding-left $sidebarWidth
 
 .navbar
@@ -35,7 +37,6 @@ body
   height $navbarHeight
   background linear-gradient(to left, #3A1C71, #D76D77, #FFAF7B)
   box-sizing border-box
-  border-bottom 1px solid $borderColor
 
 .sidebar-mask
   position fixed
@@ -48,7 +49,7 @@ body
 
 .sidebar
   font-size 15px
-  background-color transparent
+  background-color rgba(255,255,255,0.7)
   width $sidebarWidth
   position fixed
   z-index 10
@@ -61,6 +62,9 @@ body
   overflow-y auto
 
 .content:not(.custom)
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
   @extend $wrapper
   > *:first-child
     margin-top $navbarHeight
@@ -116,7 +120,7 @@ h1, h2, h3, h4, h5, h6
     padding-top ($navbarHeight + 1rem)
     margin-bottom 0
     &:first-child
-      margin-top -4rem
+      margin-top -1.5rem
       margin-bottom 1rem
       + p, + pre, + .custom-block
         margin-top 2rem
@@ -173,6 +177,7 @@ th, td
   padding-top $navbarHeight
 
 .theme-container
+  height 100%
   &.sidebar-open
     .sidebar-mask
       display: block

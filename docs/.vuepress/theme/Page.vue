@@ -1,7 +1,7 @@
 <template>
   <div class="page">
-    <slot name="top" />
-    <div class="block">
+    <div class="page-mask">
+      <slot name="top" />
       <Content :custom="false" />
       <div class="page-edit">
         <div class="edit-link" v-if="editLink">
@@ -26,8 +26,8 @@
             </router-link> →
           </span>
         </p>
+        <slot name="bottom" />
       </div>
-      <slot name="bottom" />
     </div>
   </div>
 </template>
@@ -162,15 +162,11 @@ function find(page, items, offset) {
 @import './styles/config.styl';
 @require './styles/wrapper.styl';
 
-.block {
-  background: rgba(255, 255, 255, 0.6);
-  border-radius: 25px;
-  margin: 6rem auto 1rem auto;
-  max-width: 740px;
-}
-
-.page {
-  padding-bottom: 2rem;
+.page-mask {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.7);
 }
 
 .page-edit {
