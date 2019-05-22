@@ -26,7 +26,12 @@ module.exports = {
             {
                 title: 'VUE',
                 collapsable: true,
-                children: ['/post/vue/vuepress', '/post/vue/vue-directive', '/post/vue/vue-issue']
+                children: [
+                    '/post/vue/vuepress',
+                    '/post/vue/vue-directive',
+                    '/post/vue/vue-issue',
+                    '/post/vue/vue-lifecycle'
+                ]
             }, {
                 title: 'javascript',
                 collapsable: true,
@@ -62,8 +67,7 @@ module.exports = {
         }
     },
     plugins: [
-        ['@vuepress/last-updated'],
-        ['@vuepress/back-to-top', true],
+        '@vuepress/last-updated',
         '@vuepress/pagination',
         ['@vuepress/search', {
             searchMaxSuggestions: 10
