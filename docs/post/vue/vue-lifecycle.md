@@ -1,3 +1,7 @@
+---
+date : 2019-05-22 09:35:00
+---
+
 # lifecycle
 
 ![lifecycle](~@assets/img/vue/vue-lifecycle-1.png)

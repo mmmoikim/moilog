@@ -109,7 +109,9 @@ cd -
 ---
 
 ## plugin
+
 - [플러그인 리스트](https://v1.vuepress.vuejs.org/plugin/official/plugin-active-header-links.html)
+
 ```js
     plugins: [
         ['@vuepress/last-updated'],//git에 마지막 커밋
