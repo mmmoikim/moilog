@@ -4,6 +4,12 @@ module.exports = {
     title: 'MOILOG',
     description: 'Hello! I\'m web developer. this is study blog.',
     base: '/moilog/',
+    head: [
+        ['meta', {
+            name: 'google-site-verification',
+            content: 'Np5Qu68ys0COB1T9fZ8rfxfrr_SLcHqzfmu9Q03K8YY'
+        }]
+    ],
     themeConfig: {
         logo: '/logo.png',
         repo: 'mmmoikim/moilog',
@@ -48,11 +54,12 @@ module.exports = {
                     '/post/javascript/hjw-references'
                 ]
             }, {
-                title: 'Environment',
+                title: 'Etc',
                 collapsable: true,
                 children: [
-                    '/post/environment/npm',
-                    '/post/environment/markdown'
+                    '/post/etc/npm',
+                    '/post/etc/markdown',
+                    '/post/etc/links'
                 ]
             }
         ]
@@ -69,6 +76,9 @@ module.exports = {
     plugins: [
         '@vuepress/last-updated',
         '@vuepress/pagination',
+        ['@vuepress/google-analytics', {
+            'ga': 'UA-140809764-1'
+        }],
         ['@vuepress/search', {
             searchMaxSuggestions: 10
         }],

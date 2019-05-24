@@ -12,9 +12,13 @@ cd docs/.vuepress/dist
 # if you are deploying to a custom domain
 # echo 'www.example.com' > CNAME
 
+copy /Y /b NUL sitemap.xml
+
+npm run docs:sitemap
+
 git init
-git config user.name "mmmoikim"
-git config user.email "mmmoikim@gmail.com"
+git config --local user.name "mmmoikim"
+git config --local user.email "mmmoikim@gmail.com"
 
 git add -A
 git commit -m 'deploy'

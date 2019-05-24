@@ -11,6 +11,11 @@ date : 2019-05-17 13:52:00
   - [Dedicated web worker 구현](#dedicated-web-worker-%EA%B5%AC%ED%98%84)
     - [`postMessage()`를 이용한 방법](#postmessage%EB%A5%BC-%EC%9D%B4%EC%9A%A9%ED%95%9C-%EB%B0%A9%EB%B2%95)
     - [`BroadcastChannel()`를 이용한 방법](#broadcastchannel%EB%A5%BC-%EC%9D%B4%EC%9A%A9%ED%95%9C-%EB%B0%A9%EB%B2%95)
+  - [메세지 전송 방법](#%EB%A9%94%EC%84%B8%EC%A7%80-%EC%A0%84%EC%86%A1-%EB%B0%A9%EB%B2%95)
+  - [웹 워커 기능](#%EC%9B%B9-%EC%9B%8C%EC%BB%A4-%EA%B8%B0%EB%8A%A5)
+  - [웹 워커의 한계](#%EC%9B%B9-%EC%9B%8C%EC%BB%A4%EC%9D%98-%ED%95%9C%EA%B3%84)
+  - [에러 핸들링](#%EC%97%90%EB%9F%AC-%ED%95%B8%EB%93%A4%EB%A7%81)
+  - [웹 워커의 활용 사례](#%EC%9B%B9-%EC%9B%8C%EC%BB%A4%EC%9D%98-%ED%99%9C%EC%9A%A9-%EC%82%AC%EB%A1%80)
   - [reference](#reference)
 
 ## 비동기 함수의 한계
@@ -116,6 +121,62 @@ bc.close()
 ```
 
 ![BroadcastChannel](~@assets/img/javascript/how-javascript-work-15.png)
+
+## 메세지 전송 방법
+
+- Copying the message : 메세지는 serialize, 복사, 전송, de-serialize 된다. 페이지와 worker는 같은 인스턴스를 공유 하지 않고, 각자 생성해서 중복된 결과를 가진다. 대부분의 브라우저는 자동으로 json을 인코딩/디코딩하는 기능이 있어서 이 처리는 오버헤드가 발생하고 메세지가 클수록 증가한다.
+- Transferring the message : 오리지날 센더는 한번 보내면 더이상 사용 할 수 없다. 데이터는 거의 동시에 베껴진다. ArrayBuffer만 전송 가능하다.
+
+## 웹 워커 기능
+
+ 웹 워커는 자바스크립트 바운터리 안에서만 사용 가능하다.
+
+- `navigator` 객체
+- `location` 객체
+- `XMLHttpRequest`
+- `setTimeout()/clearTimeout()` 과 `setInterval()/clearInterval()`
+- The Application Cache
+- Importing external scripts using importScripts()
+- 다른 웹 워커 생성
+
+## 웹 워커의 한계
+
+몇몇 javascript 기능에 접근하지 못하는 한계가 있다.
+
+- DOM
+- window 객체
+- document 객체
+- parent 객체
+
+- 웹 워커는 돔을 조작할 수 없다. 별도의 컴퓨팅 머신으로 사용하는고 UI 변경 결과를 페이지 코드에 전달해 사용해야 한다.
+
+## 에러 핸들링
+
+- 웹워커로 자바스크립트 에러를 처리 할 수 있다.
+- 필요 프로퍼티
+    - filename : 웹 워커 js 파일
+    - lineno : 에러 난 라인 번호
+    - message : 에러 설명
+
+``` js
+function onError(e) {
+  console.log('Line: ' + e.lineno);
+  console.log('In: ' + e.filename);
+  console.log('Message: ' + e.message);
+}
+
+var worker = new Worker('workerWithError.js');
+worker.addEventListener('error', onError, false);
+worker.postMessage(); // Start worker without a message.
+```
+
+## 웹 워커의 활용 사례
+
+- Ray tracing : ray tracing이란 빛의 경로를 추적함으로서 이미지를 생성하는 렌더링 기술이다. Ray tracing은 빛의 경로 계산하기 위해서 CPU를 많이 사용한다. 이 로직을 웹 워커에 넣어놓으면 UI block이 되지 않기 때문에 더 좋은 결과를 얻을 수 있다.
+- Encryption : 암호화 할 데이터가 많고 빈번하다면 꽤나 시간 소비가 많이 일어난다. 웹 워커는 DOM 에 접근을 못하기 때문에 순수 알고리즘 작업을 하기 좋다.
+- Prefetching data : 웹사이트를 최적화하거나 데이터 로딩 시간을 개선하기 위해서 웹 워커에서 데이터 로드를 맡기고 필요할 때 꺼내 쓸 수 있다.
+- Progressive Web Apps : PWA는 네크워크 커넥션이 불안 할때도 빠르게 로드해서 브라우저에 저장한다. 이 일을 웹 워커에서 한다면 UI blocking이 일어나지 않을 것이다.
+- Spell checking : 기본적으로 스펠 체크는 프로그램이 dictionary 파일을 읽고 dictionary를 검색 트리로 파싱된다. 프로그램은 서치트리에서 존재를 확인하고 만약 없다면 대체 스펠링을 제공한다.
 
 ## reference
 
