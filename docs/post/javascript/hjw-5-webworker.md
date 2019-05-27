@@ -16,6 +16,7 @@ date : 2019-05-17 13:52:00
   - [웹 워커의 한계](#%EC%9B%B9-%EC%9B%8C%EC%BB%A4%EC%9D%98-%ED%95%9C%EA%B3%84)
   - [에러 핸들링](#%EC%97%90%EB%9F%AC-%ED%95%B8%EB%93%A4%EB%A7%81)
   - [웹 워커의 활용 사례](#%EC%9B%B9-%EC%9B%8C%EC%BB%A4%EC%9D%98-%ED%99%9C%EC%9A%A9-%EC%82%AC%EB%A1%80)
+  - [서비스 워커 라이프 사이클](#%EC%84%9C%EB%B9%84%EC%8A%A4-%EC%9B%8C%EC%BB%A4-%EB%9D%BC%EC%9D%B4%ED%94%84-%EC%82%AC%EC%9D%B4%ED%81%B4)
   - [reference](#reference)
 
 ## 비동기 함수의 한계
@@ -154,9 +155,9 @@ bc.close()
 
 - 웹워커로 자바스크립트 에러를 처리 할 수 있다.
 - 필요 프로퍼티
-    - filename : 웹 워커 js 파일
-    - lineno : 에러 난 라인 번호
-    - message : 에러 설명
+  - filename : 웹 워커 js 파일
+  - lineno : 에러 난 라인 번호
+  - message : 에러 설명
 
 ``` js
 function onError(e) {
@@ -172,12 +173,121 @@ worker.postMessage(); // Start worker without a message.
 
 ## 웹 워커의 활용 사례
 
-- Ray tracing : ray tracing이란 빛의 경로를 추적함으로서 이미지를 생성하는 렌더링 기술이다. Ray tracing은 빛의 경로 계산하기 위해서 CPU를 많이 사용한다. 이 로직을 웹 워커에 넣어놓으면 UI block이 되지 않기 때문에 더 좋은 결과를 얻을 수 있다.
+- Ray tracing : ray tracing이란 빛의 경로를 추적하며 이미지를 생성하는 렌더링 기술이다. Ray tracing은 빛의 경로 계산하기 위해서 CPU를 많이 사용한다. 이 로직을 웹 워커에 넣어놓으면 UI block이 되지 않기 때문에 더 좋은 결과를 얻을 수 있다.
 - Encryption : 암호화 할 데이터가 많고 빈번하다면 꽤나 시간 소비가 많이 일어난다. 웹 워커는 DOM 에 접근을 못하기 때문에 순수 알고리즘 작업을 하기 좋다.
-- Prefetching data : 웹사이트를 최적화하거나 데이터 로딩 시간을 개선하기 위해서 웹 워커에서 데이터 로드를 맡기고 필요할 때 꺼내 쓸 수 있다.
-- Progressive Web Apps : PWA는 네크워크 커넥션이 불안 할때도 빠르게 로드해서 브라우저에 저장한다. 이 일을 웹 워커에서 한다면 UI blocking이 일어나지 않을 것이다.
+- Prefetching data : 웹 사이트를 최적화하거나 데이터 로딩 시간을 개선하기 위해서 웹 워커에서 데이터 로드를 맡기고 필요할 때 꺼내 쓸 수 있다.
+- Progressive Web Apps : PWA는 네크워크 커넥션이 불안 할 때도 빠르게 로드해서 브라우저에 저장한다. 이 일을 웹 워커에서 한다면 UI blocking이 일어나지 않을 것이다.
 - Spell checking : 기본적으로 스펠 체크는 프로그램이 dictionary 파일을 읽고 dictionary를 검색 트리로 파싱된다. 프로그램은 서치트리에서 존재를 확인하고 만약 없다면 대체 스펠링을 제공한다.
+
+## 서비스 워커 라이프 사이클
+
+- 서비스 워커는 글로벌 스크립트에 속해 있다.
+- 특정 웹 페이지에 국한 되지 않는다.
+- DOM에 접글 할 수 없다
+- 서비스 워커에 메인 기능은 **오프라인 경험**을 지원하기 위함이다.
+
+1. Download
+   - 서비서 워커가 있는 js 파일을 브라우저가 다운로드 할 때
+2. Installation
+   - 서비스워커 설치를 위해서 자바스크립트 코드를 등록 해야한다.
+   - 서비스 워커가 등록 되었을 때 브라우저는 background에서 설치를 시작한다.
+   - 현재 환경이 서비스워커를 지원하면 서비스워커를 등록한다.
+   - 이미 등록되어 있으면 페이지를 로드할 때 마다 register()를 호출해도 된다. 설치는 한번만 발생 한다.
+   - register는 꼭 서비스 워커 파일에 등록 되어 있어야 한다.
+
+    ```html
+    <!DOCTYPE html>
+    An image will appear here in 3 seconds:
+    <script>
+      navigator.serviceWorker.register('/sw.js')
+        .then(reg => console.log('SW registered!', reg))
+        .catch(err => console.log('Boo!', err));
+
+      setTimeout(() => {
+        const img = new Image();
+        img.src = '/dog.svg';
+        document.body.appendChild(img);
+      }, 3000);
+    </script>
+    ```
+
+   - sw.js파일을 등록하고 이미지 추가하기
+
+3. Activation
+   - 서비스워커가 등록 된 후 이전 캐쉬를 관리하기 위한 단계이다.
+   - 한번 작동 되면 서비스 워커는 그 스코프 아래에 있는 모든 페이지를 컨트롤 하기 시작하고 처음 등록된 페이지는 그 페이지가 다시 등록되기 전까지 다시 컨트롤 하지 않는다.
+
+  ```js
+  self.addEventListener('install', event => {
+     console.log('V1 installing…');
+
+    // 설치 완료 시점과 성공 여부를 브라우저에 알립니다.
+     event.waitUntil(
+       caches.open('static-v1').then(cache => cache.add('/cat.svg'))
+     );
+  });
+
+     //push 및 sync와 같은 함수 이벤트를 처리할 준비가 되면 발생
+  self.addEventListener('activate', event => {
+    console.log('V1 now ready to handle fetches!');
+   });
+
+  self.addEventListener('fetch', event => {
+    const url = new URL(event.request.url);
+
+    // 새로고침 시 /dog.svg' 호출 했을 때 캐시 해놓은 /cat.svg 제공
+    if (url.origin == location.origin && url.pathname == '/dog.svg') {
+       event.respondWith(caches.match('/cat.svg'));
+      }
+   });
+  ```
+
+   ![BroadcastChannel](~@assets/img/javascript/how-javascript-work-16.png)
+
+4. Updating a Service Worker
+   - 현재 서비스 워커 파일과 비교해 바이트 하나만 달라도 변경되었다고 판단해 서비스 워커를 시작한다.
+   - 이 떄 설치되는 서비스 워커는 새로 설치된다. 하지만 이전 서비스 워커가 페이지를 제어하고 있다면 새 서비스 워커는 waiting 상태가 된다.
+   - 모든 브라우저를 다 닫지 않으면 이전 서비스 워커로 잡힘.
+
+```js
+//새로운 이름으로 설정
+const expectedCaches = ['static-v2'];
+
+self.addEventListener('install', event => {
+  console.log('V2 installing…');
+
+  // cache a horse SVG into a new cache, static-v2
+  event.waitUntil(
+    caches.open('static-v2').then(cache => cache.add('/horse.svg'))
+  );
+});
+
+self.addEventListener('activate', event => {
+  // expectedCaches 가 아닌거 지우기
+  event.waitUntil(
+    caches.keys().then(keys => Promise.all(
+      keys.map(key => {
+        if (!expectedCaches.includes(key)) {
+          return caches.delete(key);
+        }
+      })
+    )).then(() => {
+      console.log('V2 now ready to handle fetches!');
+    })
+  );
+});
+
+self.addEventListener('fetch', event => {
+  const url = new URL(event.request.url);
+
+  if (url.origin == location.origin && url.pathname == '/dog.svg') {
+    event.respondWith(caches.match('/horse.svg'));
+  }
+});
+```
 
 ## reference
 
 - [How JavaScript works: The building blocks of Web Workers + 5 cases when you should use them](https://blog.sessionstack.com/how-javascript-works-the-building-blocks-of-web-workers-5-cases-when-you-should-use-them-a547c0757f6a)
+- [How JavaScript works: Service Workers, their lifecycle and use cases](https://blog.sessionstack.com/how-javascript-works-service-workers-their-life-cycle-and-use-cases-52b19ad98b58)
+- [서비스 워커 수명주기](https://developers.google.com/web/fundamentals/primers/service-workers/lifecycle?hl=ko)
