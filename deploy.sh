@@ -1,7 +1,6 @@
 #!/usr/bin/env sh
 
 # abort on errors
-set -e
 
 # build
 npm run docs:build
@@ -13,7 +12,6 @@ cd docs/.vuepress/dist
 # echo 'www.example.com' > CNAME
 
 copy /Y /b NUL sitemap.xml
-
 npm run docs:sitemap
 
 git init
@@ -30,5 +28,3 @@ git commit -m 'deploy'
 # git push -f git@github.com:<USERNAME>/<REPO>.git master:gh-pages
 
 git push -f https://github.com/mmmoikim/moilog.git master:gh-pages
-
-cd -

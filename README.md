@@ -1,4 +1,29 @@
 #**[MOILOG](https://mmmoikim.github.io/moilog/)** 
 
-- 이슈 정리, 스터디용 블로그
-- vuepress
+- 블로그
+
+- 빌드
+
+``` sh
+npm run docs:build
+```
+
+- 개발빌드
+
+``` sh
+npm run docs:dev
+```
+
+- deploy
+
+``` sh
+deploy.sh
+```
+
+- sitemap 생성
+
+``` sh
+cd docs/.vuepress/dist
+copy /Y /b NUL sitemap.xml
+npm run docs:sitemap
+```
