@@ -2,7 +2,7 @@
 date : 2019-05-02 13:52:00
 ---
 
-# (HJW) references
+# references
 
 - How JavaScript works 시리즈
   1. *DONE* [How JavaScript works: an overview of the engine, the runtime, and the call stack](https://blog.sessionstack.com/how-does-javascript-actually-work-part-1-b0bacc073cf)

@@ -36,7 +36,8 @@ module.exports = {
                     '/post/vue/vuepress',
                     '/post/vue/vue-directive',
                     '/post/vue/vue-issue',
-                    '/post/vue/vue-lifecycle'
+                    '/post/vue/vue-lifecycle',
+                    '/post/vue/vue-vs-debugging'
                 ]
             }, {
                 title: 'javascript',
@@ -44,14 +45,20 @@ module.exports = {
                 children: [
                     '/post/javascript/this',
                     '/post/javascript/lodash',
-                    '/post/javascript/bubble-capture',
-                    '/post/javascript/hjw-1-browser',
-                    '/post/javascript/hjw-2-memory',
-                    '/post/javascript/hjw-3-websocket',
-                    '/post/javascript/hjw-4-wasm',
-                    '/post/javascript/hjw-5-webworker',
-                    '/post/javascript/hjw-rendering',
-                    '/post/javascript/hjw-references'
+                    '/post/javascript/bubble-capture'
+                ]
+            }, {
+                title: 'how javascript work',
+                collapsable: true,
+                children: [
+                    '/post/hjw/hjw-1-browser',
+                    '/post/hjw/hjw-2-memory',
+                    '/post/hjw/hjw-3-websocket',
+                    '/post/hjw/hjw-4-wasm',
+                    '/post/hjw/hjw-5-webworker',
+                    '/post/hjw/hjw-6-webpush',
+                    '/post/hjw/hjw-rendering',
+                    '/post/hjw/hjw-references'
                 ]
             }, {
                 title: 'Etc',
@@ -59,7 +66,8 @@ module.exports = {
                 children: [
                     '/post/etc/npm',
                     '/post/etc/markdown',
-                    '/post/etc/links'
+                    '/post/etc/links',
+                    '/post/etc/webpack'
                 ]
             }
         ]

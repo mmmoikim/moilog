@@ -2,9 +2,9 @@
 date : 2019-05-01 13:52:00
 ---
 
-# (HJW) rendering
+# rendering
 
-- [(HJW) rendering](#hjw-rendering)
+- [rendering](#rendering)
   - [브라우저의 주요 컴포넌트](#%EB%B8%8C%EB%9D%BC%EC%9A%B0%EC%A0%80%EC%9D%98-%EC%A3%BC%EC%9A%94-%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8)
   - [렌더링 엔진](#%EB%A0%8C%EB%8D%94%EB%A7%81-%EC%97%94%EC%A7%84)
   - [렌더링 과정](#%EB%A0%8C%EB%8D%94%EB%A7%81-%EA%B3%BC%EC%A0%95)

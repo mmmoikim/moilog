@@ -2,9 +2,9 @@
 date : 2019-05-16 13:52:00
 ---
 
-# (HJW) 3. websockek과 HTTP/2 + SSE
+# 3. websockek과 HTTP/2 + SSE
 
-- [(HJW) 3. websockek과 HTTP/2 + SSE](#hjw-3-websockek%EA%B3%BC-http2--sse)
+- [3. websockek과 HTTP/2 + SSE](#3-websockek%EA%B3%BC-http2--sse)
   - [long polling](#long-polling)
   - [webSocket](#websocket)
   - [웹소켓의 프레임](#%EC%9B%B9%EC%86%8C%EC%BC%93%EC%9D%98-%ED%94%84%EB%A0%88%EC%9E%84)

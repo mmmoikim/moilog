@@ -2,9 +2,9 @@
 date : 2019-04-25 13:52:00
 ---
 
-# (HJW) 1. 브라우저 구성과 엔진
+# 1. 브라우저 구성과 엔진
 
-- [(HJW) 1. 브라우저 구성과 엔진](#hjw-1-%EB%B8%8C%EB%9D%BC%EC%9A%B0%EC%A0%80-%EA%B5%AC%EC%84%B1%EA%B3%BC-%EC%97%94%EC%A7%84)
+- [1. 브라우저 구성과 엔진](#1-%EB%B8%8C%EB%9D%BC%EC%9A%B0%EC%A0%80-%EA%B5%AC%EC%84%B1%EA%B3%BC-%EC%97%94%EC%A7%84)
   - [브라우저 구성](#%EB%B8%8C%EB%9D%BC%EC%9A%B0%EC%A0%80-%EA%B5%AC%EC%84%B1)
     - [Node.js 구성](#nodejs-%EA%B5%AC%EC%84%B1)
   - [브라우저 엔진](#%EB%B8%8C%EB%9D%BC%EC%9A%B0%EC%A0%80-%EC%97%94%EC%A7%84)

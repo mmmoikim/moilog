@@ -2,9 +2,9 @@
 date : 2019-05-17 13:52:00
 ---
 
-# (HJW) 5. webworker
+# 5. webworker
 
-- [(HJW) 5. webworker](#hjw-5-webworker)
+- [5. webworker](#5-webworker)
   - [비동기 함수의 한계](#%EB%B9%84%EB%8F%99%EA%B8%B0-%ED%95%A8%EC%88%98%EC%9D%98-%ED%95%9C%EA%B3%84)
   - [web worker](#web-worker)
   - [web worker type](#web-worker-type)

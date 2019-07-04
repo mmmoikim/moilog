@@ -2,9 +2,9 @@
 date : 2019-05-15 13:52:00
 ---
 
-# (HJW) 4. 웹어셈블리
+# 4. 웹어셈블리
 
-- [(HJW) 4. 웹어셈블리](#hjw-4-%EC%9B%B9%EC%96%B4%EC%85%88%EB%B8%94%EB%A6%AC)
+- [4. 웹어셈블리](#4-%EC%9B%B9%EC%96%B4%EC%85%88%EB%B8%94%EB%A6%AC)
   - [webAssembly](#webassembly)
   - [javascript vs webAssembly](#javascript-vs-webassembly)
   - [wasm 메모리](#wasm-%EB%A9%94%EB%AA%A8%EB%A6%AC)
