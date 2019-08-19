@@ -27,7 +27,7 @@ module.exports = {
         sidebar: [{
                 title: 'WEB',
                 collapsable: true,
-                children: ['/post/web/bfcache']
+                children: ['/post/web/bfcache', '/post/web/atomic']
             },
             {
                 title: 'VUE',
