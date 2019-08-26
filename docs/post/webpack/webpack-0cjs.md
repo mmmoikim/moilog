@@ -2,7 +2,7 @@
 date : 2019-07-04
 ---
 
-# webpack &  babel
+# webpack 0CJS
 
 ## 웹팩
 
@@ -11,7 +11,7 @@ date : 2019-07-04
 - 웹팩은 모듈에서 필요한 함수들만 번들에 포함시킨다.
 - 웹팩4는 토이앱을 kickstart하거나 할 때 config 파일을 모두 셋팅하는 복잡 함을 해소 시키기 위해 'zero configration'으로 시작 할 수 있다.
 
-## 웹팩 4 시작하기
+## 웹팩 4 0CJS 시작하기
 
 1. 프로젝트 폴더에 웹팩, 웹팩 cli install
 
