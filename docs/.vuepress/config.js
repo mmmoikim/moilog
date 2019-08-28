@@ -75,6 +75,12 @@ module.exports = {
           '/post/webpack/webpack-react-codesplit'
         ]
       }, {
+        title: 'java',
+        collapsable: true,
+        children: [
+          '/post/java/spring-cache'
+        ]
+      }, {
         title: 'Etc',
         collapsable: true,
         children: [
