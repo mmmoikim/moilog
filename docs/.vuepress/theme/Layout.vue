@@ -15,7 +15,6 @@
       <slot name="page-top" slot="top" />
       <slot name="page-bottom" slot="bottom" />
     </Page>
-    <Disqus class="content"/>
     </template>
   </div>
 </template>
@@ -27,11 +26,11 @@ import Home from "./Home.vue";
 import Navbar from "./Navbar.vue";
 import Page from "./Page.vue";
 import Sidebar from "./Sidebar.vue";
-import Disqus from '../components/Disqus.vue'
+
 import { resolveSidebarItems } from "./util";
 
 export default {
-  components: { Home, Page, Sidebar, Navbar, Disqus },
+  components: { Home, Page, Sidebar, Navbar },
   data() {
     return {
       isSidebarOpen: false

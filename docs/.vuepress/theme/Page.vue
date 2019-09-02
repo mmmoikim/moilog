@@ -3,6 +3,7 @@
     <div class="page-mask">
       <slot name="top" />
       <Content :custom="false" />
+      <Disqus />
       <div class="page-edit">
         <div class="edit-link" v-if="editLink">
           <a :href="editLink" target="_blank" rel="noopener noreferrer">{{ editLinkText }}</a>
@@ -34,8 +35,10 @@
 
 <script>
 import { resolvePage, normalize, outboundRE, endingSlashRE } from './util'
+import Disqus from '../components/Disqus.vue'
 
 export default {
+  components: { Disqus },
   props: ['sidebarItems'],
   computed: {
     lastUpdated() {
