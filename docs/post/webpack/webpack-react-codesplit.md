@@ -37,10 +37,10 @@ const withSplitting = getComponent => {
   return WithSplitting;
 };
 
-export const About = withSplitting(() => import('Src/Container/About/About'));
-export const User = withSplitting(() => import('Src/Container/User/User'));
-export const SuperMarket = withSplitting(() => import('Src/Container/SuperMarket/SuperMarket'));
-export const Profile = withSplitting(() => import('Src/Container/Profile/Profile'));
+export const About = withSplitting(() => import('$Src/Container/About/About'));
+export const User = withSplitting(() => import('$Src/Container/User/User'));
+export const SuperMarket = withSplitting(() => import('$Src/Container/SuperMarket/SuperMarket'));
+export const Profile = withSplitting(() => import('$Src/Container/Profile/Profile'));
 
 ```
 
