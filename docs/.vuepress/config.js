@@ -78,7 +78,8 @@ module.exports = {
         title: 'java',
         collapsable: true,
         children: [
-          '/post/java/spring-cache'
+          '/post/java/spring-cache',
+          '/post/java/http-client-call'
         ]
       }, {
         title: 'Etc',
