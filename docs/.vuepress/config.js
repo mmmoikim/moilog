@@ -30,6 +30,13 @@ module.exports = {
         children: ['/post/web/bfcache', '/post/web/atomic']
       },
       {
+        title: 'REACT',
+        collapsable: true,
+        children: [
+          '/post/react/construction-react-project',
+        ]
+      },
+      {
         title: 'VUE',
         collapsable: true,
         children: [
