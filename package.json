@@ -5,19 +5,19 @@
         "docs:sitemap": "vuepress-sitemap -H https://mmmoikim.github.io/moilog -d docs/.vuepress/dist"
     },
     "devDependencies": {
-        "@vuepress/plugin-active-header-links": "^1.0.0-alpha.47",
-        "@vuepress/plugin-google-analytics": "^1.0.0-alpha.48",
-        "@vuepress/plugin-last-updated": "^1.0.0-alpha.0",
-        "@vuepress/plugin-pagination": "^1.0.0-alpha.47",
-        "@vuepress/plugin-search": "^1.0.0-alpha.47",
-        "vuepress": "^0.14.11"
+        "@vuepress/plugin-active-header-links": "^1.5.2",
+        "@vuepress/plugin-google-analytics": "^1.5.2",
+        "@vuepress/plugin-last-updated": "^1.5.2",
+        "@vuepress/plugin-pagination": "^1.0.0-alpha.50",
+        "@vuepress/plugin-search": "^1.5.2",
+        "vuepress": "^1.5.2"
     },
     "dependencies": {
         "esm": "^3.2.25",
         "file-loader": "^3.0.1",
-        "moment": "^2.24.0",
+        "moment": "^2.27.0",
         "stylus-loader": "^3.0.2",
-        "vuepress-plugin-sitemap": "^2.1.2",
-        "webpack-dev-middleware": "^3.6.0"
+        "vuepress-plugin-sitemap": "^2.3.1",
+        "webpack-dev-middleware": "^3.7.2"
     }
 }

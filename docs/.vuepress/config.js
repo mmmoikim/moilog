@@ -37,14 +37,12 @@ module.exports = {
         children: ["/post/web/bfcache", "/post/web/atomic"],
       },
       {
-        title: 'REACT',
+        title: "REACT",
         collapsable: true,
-        children: [
-          '/post/react/construction-react-project',
-        ]
+        children: ["/post/react/construction-react-project"],
       },
       {
-        title: 'VUE',
+        title: "VUE",
         collapsable: true,
         children: [
           "/post/vue/vuepress",
@@ -61,7 +59,7 @@ module.exports = {
           "/post/javascript/this",
           "/post/javascript/lodash",
           "/post/javascript/bubble-capture",
-          "post/javascript/es-modules",
+          "/post/javascript/es-modules",
         ],
       },
       {
@@ -96,12 +94,10 @@ module.exports = {
       {
         title: "java",
         collapsable: true,
-        children: [
-          '/post/java/spring-cache',
-          '/post/java/http-client-call'
-        ]
-      }, {
-        title: 'Etc',
+        children: ["/post/java/spring-cache", "/post/java/http-client-call"],
+      },
+      {
+        title: "Etc",
         collapsable: true,
         children: ["/post/etc/npm", "/post/etc/markdown", "/post/etc/links"],
       },
