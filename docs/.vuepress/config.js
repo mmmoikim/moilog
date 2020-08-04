@@ -65,7 +65,7 @@ module.exports = {
       {
         title: "css",
         collapsable: true,
-        children: ["/post/css/flexbox", "/post/css/grid"],
+        children: ["/post/css/flexbox", "/post/css/grid", "/post/css/scss"],
       },
       {
         title: "how javascript work",

@@ -191,3 +191,46 @@ date: 2020-08-03
 ```
 
 ## minmax
+- 최소, 최대값 지정 가능
+```css
+.grid {
+    display : grid;
+    grid-template-columns: repeat(4, minmax(100px, 150px));
+}
+```
+
+## auto-fit auto-fill
+- repeat 에 쓸 수 있음
+- auto-fill : 화면에 따라 자동으로 그리드 채워줌
+- auto-fit : 지금 있는 돔을 자동으로 화면 사이즈에 맞춰서 채워줌
+
+```css
+.grid {
+    display : grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 150px));
+}
+
+.grid {
+    display : grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 150px));
+}
+```
+
+## min-content, max-content
+- max-content : 박스가 content가 차지할 수 있는 최대 길이만큼 커짐, 줄바꿈 안됨
+- min-content : content를 재배열하더라도 박스가 최소한으로 줄어들게 함
+```css
+//최대 1fr, 최소 컨텐츠 최소크기만큼
+.grid {
+    display : grid;
+    grid-template-columns: repeat(5, minmax(min-content, 1fr);
+}
+
+.grid {
+    display : grid;
+    grid-template-columns: repeat(5, minmax(20px, max-content);
+}
+```
+
+## grid garden
+<https://cssgridgarden.com/#ko>
