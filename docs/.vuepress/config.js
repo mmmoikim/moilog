@@ -60,6 +60,10 @@ module.exports = {
           "/post/javascript/lodash",
           "/post/javascript/bubble-capture",
           "/post/javascript/es-modules",
+          "/post/javascript/functional-programming",
+          "/post/javascript/modern-browser",
+          "/post/javascript/objective-javascript",
+          "/post/javascript/typescript-programming"
         ],
       },
       {
@@ -94,6 +98,7 @@ module.exports = {
           "/post/webpack/webpack-js-testing",
           "/post/webpack/webpack-react-testing",
           "/post/webpack/webpack-react-codesplit",
+           "/post/webpack/roolup"
         ],
       },
       {
